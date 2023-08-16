@@ -1,11 +1,11 @@
 @import url(./vendor/normalize.css);
+@import url(./vendor/fonts.css);
 
 .page {
   margin: 0 auto;
   padding: 0;
   width: 100%;
   min-height: 100vh;
-  background-color: #000000;
   font-family: 'Inter', sans-serif, Arial;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
