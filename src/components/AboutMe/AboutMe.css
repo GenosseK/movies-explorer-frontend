@@ -1,0 +1,87 @@
+.about-me {
+    padding: 110px 70px;
+    background-color: rgba(32, 32, 32, 1);
+}
+
+.about-me__header {
+    color: #FFF;
+    font-family: 'Inter', sans-serif, Arial;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.88px;
+    border-bottom: 1px solid rgba(218, 218, 218, 1);
+    padding-bottom: 23px;
+    margin: 0;
+}
+
+.about-me__container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 66px;
+}
+
+.about-me__name {
+    color: #FFF;
+    font-family: 'Inter', sans-serif, Arial;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 58px;
+    letter-spacing: -2px;
+    margin: 0;
+}
+
+.about-me__job {
+    margin: 18px 0 0 0;
+    color: #FFF;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: 'Inter', sans-serif, Arial;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.about-me__description {
+    max-width: 600px;
+    margin: 26px 0 0 0;
+    color: #FFF;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: 'Inter', sans-serif, Arial;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+}
+
+.about-me__links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 99px 0 0 0;
+    padding: 0;
+}
+
+.about-me__link {
+    text-decoration: none;
+    color: #FFF;
+    font-family: 'Inter', sans-serif, Arial;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    transition: opacity .3s easy;
+}
+
+.about-me__link:hover {
+    opacity: 0.7;
+}
+
+.about-me__image {
+    border-radius: 10px;
+    max-width: 270px;
+    max-height: 327px;
+}
