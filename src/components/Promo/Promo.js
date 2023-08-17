@@ -1,10 +1,14 @@
 import './Promo.css';
-import Header from "../common/Header/Header";
+import Header from '../common/Header/Header';
+import promo from '../../images/landing-logo.svg';
 
 function Promo() {
     return (
         <section className='promo'>
-            <Header />
+            <div className='promo__container'>
+                <h1 className='promo__title'>Учебный проект студента факультета Веб-разработки.</h1>
+                <img className='promo__logo' src={promo} alt='Логотип Практикума' />
+            </div>
         </section>
     )
 };

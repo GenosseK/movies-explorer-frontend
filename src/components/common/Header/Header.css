@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-between;
     padding: 18px 70px;
+    background: rgba(7, 48, 66, 1);
 }
 
 .header__logo {

@@ -6,6 +6,7 @@
 }
 
 .navigation__link {
+    font-family: 'Inter', sans-serif, Arial;
     font-size: 12px;
     font-weight: 500;
     line-height: 16px;
@@ -17,6 +18,7 @@
 .navigation__button {
     padding: 8px 20px;
     background-color: #2BE080;
+    font-family: 'Inter', sans-serif, Arial;
     font-weight: 500;
     font-size: 12px;
     line-height: 16px;

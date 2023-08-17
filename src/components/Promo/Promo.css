@@ -1,6 +1,34 @@
 .promo {
-    position: relative;
-    background: rgba(7, 48, 66, 1);
-    box-sizing: border-box;
-    overflow: hidden;
-  }
+  background: rgba(7, 48, 66, 1);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.promo__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  min-height: 525px;
+  position: relative;
+}
+
+.promo__title {
+  margin: 0;
+  color: #FFFFFF;
+  max-width: 730px;
+  font-family: 'Inter', sans-serif, Arial;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 58px;
+  letter-spacing: -2px;
+}
+
+.promo__logo {
+  min-width: 320px;
+  min-height: 320px;
+  position: absolute;
+}
