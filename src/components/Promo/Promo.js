@@ -1,5 +1,4 @@
 import './Promo.css';
-import Header from '../common/Header/Header';
 import promo from '../../images/landing-logo.svg';
 
 function Promo() {
