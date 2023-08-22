@@ -12,7 +12,7 @@ function Header() {
         src={logo} 
         alt="Логотип приложения" 
         />
-      </Link>
+      </Link>      
       <Navigation />
     </header>
   );
