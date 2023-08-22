@@ -1,11 +1,12 @@
+import AboutUser from '../AboutUser/AboutUser';
 import Header from '../Header/Header';
 import './Profile.css';
 
-function Profile() {
+function Profile({ loggedIn }) {
     return (
         <>
-        <Header />
-        
+        <Header loggedIn={loggedIn} />
+        <AboutUser />
         </>
     )
 };

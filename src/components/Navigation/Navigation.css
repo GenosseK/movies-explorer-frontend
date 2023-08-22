@@ -1,4 +1,4 @@
-.navigation__auth {
+.navigation__loggedIn {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -61,7 +61,7 @@
     margin: 0;
     margin-left: 11px;
     margin-right: 7px;
-    text-decoration: none;
+    text-decoration-line: none;
 }
 
 .navigation__account-button_image {

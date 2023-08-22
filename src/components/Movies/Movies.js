@@ -4,10 +4,10 @@ import SearchForm from '../SearchForm/SearchForm';
 import Footer from '../Footer/Footer';
 import './Movies.css';
 
-function Movies() {
+function Movies({ loggedIn }) {
     return (
         <>
-        <Header />
+        <Header loggedIn={loggedIn} />
         <SearchForm />
         <MoviesCardList />
         <Footer />

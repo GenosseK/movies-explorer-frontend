@@ -2,8 +2,9 @@ import "./Header.css";
 import logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
+import NavAuth from "../NavAuth/NavAuth";
 
-function Header() {
+function Header({ loggedIn }) {
   return (
     <header className="header">
       <Link to="/">
@@ -13,7 +14,8 @@ function Header() {
         alt="Логотип приложения" 
         />
       </Link>      
-      <Navigation />
+      {!loggedIn && <NavAuth />}
+      {loggedIn && <Navigation />}
     </header>
   );
 }

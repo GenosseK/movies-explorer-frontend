@@ -1,18 +1,23 @@
 import { Route, Routes } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import Main from '../Landing/Landing/Main';
 import Movies from '../Movies/Movies';
 import Profile from '../Profile/Profile';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import './App.css';
+import React from 'react';
 
 function App() {
+
+  const [loggedIn, setLoggedIn] = useState(true);
+
   return (
     <div className="App">
       <Routes>
-        <Route path='/' element={<Main />} />
-        <Route path='/movies' element={<Movies />} />
-        <Route path='/saved-movies' element={<SavedMovies />} />
-        <Route path='/profile' element={<Profile />} />
+        <Route path='/' element={<Main loggedIn={loggedIn} />} />
+        <Route path='/movies' element={<Movies loggedIn={loggedIn} />} />
+        <Route path='/saved-movies' element={<SavedMovies loggedIn={loggedIn} />} />
+        <Route path='/profile' element={<Profile loggedIn={loggedIn} />} />
       </Routes>
     </div>
   );
