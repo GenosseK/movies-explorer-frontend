@@ -6,6 +6,9 @@ import Profile from '../Profile/Profile';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import './App.css';
 import React from 'react';
+import Register from '../Register/Register';
+import Login from '../Login/Login';
+import PageNotFound from '../PageNotFound/PageNotFound';
 
 function App() {
 
@@ -18,6 +21,9 @@ function App() {
         <Route path='/movies' element={<Movies loggedIn={loggedIn} />} />
         <Route path='/saved-movies' element={<SavedMovies loggedIn={loggedIn} />} />
         <Route path='/profile' element={<Profile loggedIn={loggedIn} />} />
+        <Route path='/signup' element={<Register />} />
+        <Route path='/signin' element={<Login />} />
+        <Route path='*' element={<PageNotFound />} />
       </Routes>
     </div>
   );

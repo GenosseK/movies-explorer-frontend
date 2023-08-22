@@ -37,7 +37,7 @@
     opacity: 0.8;
 }
 
-.navigation__account-button {
+.navigation__profile-button {
     border: none;
     width: 100px;
     height: 32px;
@@ -48,9 +48,14 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    transition: opacity .3s ease;
 }
 
-.navigation__account-button_text {
+.navigation__profile-button:hover {
+    opacity: 0.8;
+}
+
+.navigation__profile-button_text {
     color: #FFF;
     font-feature-settings: 'clig' off, 'liga' off;
     font-family: 'Inter', sans-serif, Arial;
@@ -64,12 +69,16 @@
     text-decoration-line: none;
 }
 
-.navigation__account-button_image {
+.navigation__profile-button_image {
     border-radius: 50px;
     background-color: #0F4157;
     height: 10px;
     width: 10px;
     padding: 7.8px;
+}
+
+.navigation__profile-link {
+    text-decoration: none;
 }
 
 /*

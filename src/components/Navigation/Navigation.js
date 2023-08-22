@@ -10,10 +10,10 @@ function Navigation() {
                 <Link to='saved-movies' className='navigation__link'>Сохранённые фильмы</Link>
             </div>
             <div className='navigation__links-right'>
-                <Link to='/profile'>
-                    <button className='navigation__account-button'>
-                        <p className='navigation__account-button_text'>Аккаунт</p>
-                        <img className='navigation__account-button_image' src={account_button} alt='Аккаунт'/>
+                <Link to='/profile' className='navigation__profile-link'>
+                    <button className='navigation__profile-button'>
+                        <p className='navigation__profile-button_text'>Аккаунт</p>
+                        <img className='navigation__profile-button_image' src={account_button} alt='Аккаунт'/>
                     </button>
                 </Link>
             </div>
