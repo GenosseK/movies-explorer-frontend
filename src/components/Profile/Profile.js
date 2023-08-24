@@ -2,10 +2,10 @@ import AboutUser from '../AboutUser/AboutUser';
 import Header from '../Header/Header';
 import './Profile.css';
 
-function Profile({ loggedIn }) {
+function Profile({ loggedIn, headerColor }) {
     return (
         <>
-        <Header loggedIn={loggedIn} />
+        <Header loggedIn={loggedIn} headerColor={headerColor} />
         <AboutUser />
         </>
     )

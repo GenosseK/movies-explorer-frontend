@@ -4,10 +4,10 @@ import SearchForm from '../SearchForm/SearchForm';
 import Footer from '../Footer/Footer';
 import './Movies.css';
 
-function Movies({ loggedIn }) {
+function Movies({ loggedIn, headerColor }) {
     return (
         <>
-        <Header loggedIn={loggedIn} />
+        <Header loggedIn={loggedIn} headerColor={headerColor} />
         <SearchForm />
         <MoviesCardList />
         <Footer />

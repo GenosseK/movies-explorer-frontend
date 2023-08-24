@@ -42,7 +42,6 @@
     width: 100px;
     height: 32px;
     border-radius: 40px;
-    background: #073042;
     box-shadow: 0px 3px 14px 0px rgba(0, 0, 0, 0.08);
     padding: 0;
     display: flex;
@@ -53,6 +52,14 @@
 
 .navigation__profile-button:hover {
     opacity: 0.8;
+}
+
+.navigation__profile-button_blue {
+    background: #073042;
+}
+
+.navigation__profile-button_black {
+    background: #202020;
 }
 
 .navigation__profile-button_text {
@@ -71,7 +78,6 @@
 
 .navigation__profile-button_image {
     border-radius: 50px;
-    background-color: #0F4157;
     height: 10px;
     width: 10px;
     padding: 7.8px;
@@ -79,6 +85,14 @@
 
 .navigation__profile-link {
     text-decoration: none;
+}
+
+.navigation__profile-button_image_blue {
+    background-color: #0F4157;
+}
+
+.navigation__profile-button_image_black {
+    background-color: #313131;
 }
 
 /*

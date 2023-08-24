@@ -2,14 +2,21 @@
     display: flex;
     justify-content: space-between;
     padding: 18px 70px;
-    background: rgba(7, 48, 66, 0);
-    position: fixed;
+    gap: 45px;
+    /*position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 100;
-    gap: 45px;
-   /*backdrop-filter: blur(5px); */
+    backdrop-filter: blur(5px); */
+}
+
+.header__blue {
+    background: rgba(7, 48, 66, 1);
+}
+
+.header__black {
+    background: #202020;
 }
 
 .header__logo {

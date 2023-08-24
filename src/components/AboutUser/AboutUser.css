@@ -2,8 +2,8 @@
     background: #202020;
     display: flex;
     justify-content: center;
-    padding-top: 148px;
-    min-height: calc(100vh - 148px);
+    padding-top: 74px;
+    height: 100vh;
 }
 
 .profile__form {

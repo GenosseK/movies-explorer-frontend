@@ -4,9 +4,12 @@ import { Link } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 import NavAuth from "../NavAuth/NavAuth";
 
-function Header({ loggedIn }) {
+function Header({ loggedIn, headerColor }) {
+
+  const headerClass = `header ${headerColor === "blue" ? "header__blue" : "header__black"}`;
+
   return (
-    <header className="header">
+    <header className={headerClass}>
       <Link to="/">
         <img 
         className="header__logo" 
@@ -15,7 +18,7 @@ function Header({ loggedIn }) {
         />
       </Link>      
       {!loggedIn && <NavAuth />}
-      {loggedIn && <Navigation />}
+      {loggedIn && <Navigation headerColor={headerColor} />}
     </header>
   );
 }

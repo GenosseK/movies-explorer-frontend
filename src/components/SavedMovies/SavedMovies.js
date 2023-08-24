@@ -4,10 +4,10 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SearchForm from '../SearchForm/SearchForm';
 import './SavedMovies.css';
 
-function SavedMovies({ loggedIn }) {
+function SavedMovies({ loggedIn, headerColor }) {
     return (
         <>
-        <Header loggedIn={loggedIn} />
+        <Header loggedIn={loggedIn} headerColor={headerColor} />
         <SearchForm />
         <MoviesCardList />
         <Footer />

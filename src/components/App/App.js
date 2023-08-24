@@ -12,15 +12,15 @@ import PageNotFound from '../PageNotFound/PageNotFound';
 
 function App() {
 
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
 
   return (
     <div className="App">
       <Routes>
-        <Route path='/' element={<Main loggedIn={loggedIn} />} />
-        <Route path='/movies' element={<Movies loggedIn={loggedIn} />} />
-        <Route path='/saved-movies' element={<SavedMovies loggedIn={loggedIn} />} />
-        <Route path='/profile' element={<Profile loggedIn={loggedIn} />} />
+        <Route path='/' element={<Main loggedIn={loggedIn} headerColor="blue" />} />
+        <Route path='/movies' element={<Movies loggedIn={loggedIn} headerColor="black" />} />
+        <Route path='/saved-movies' element={<SavedMovies loggedIn={loggedIn} headerColor="black" />} />
+        <Route path='/profile' element={<Profile loggedIn={loggedIn} headerColor="black" />} />
         <Route path='/signup' element={<Register />} />
         <Route path='/signin' element={<Login />} />
         <Route path='*' element={<PageNotFound />} />
