@@ -9,6 +9,7 @@ import React from 'react';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import PageNotFound from '../PageNotFound/PageNotFound';
+import './App.css';
 
 function App() {
 

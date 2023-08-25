@@ -4,7 +4,7 @@ import './Register.css';
 function Register() {
     return (
         <>
-            <Form greeting='Добро пожаловать!' button='Зарегестрироваться' question='Уже зарегистрированы?' path='signin' link='Войти'>
+            <Form greeting='Добро пожаловать!' button='Зарегестрироваться' question='Уже зарегистрированы?' path='/signin' link='Войти'>
 
                 <label className='form__item'>
                     <p className='form__item-text'>Имя</p>

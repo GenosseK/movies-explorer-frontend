@@ -90,3 +90,10 @@
     font-weight: 500;
     line-height: 17px;
 }
+
+@media screen and (max-width: 800px) {
+    .about {
+        padding: 90px 50px;
+    }
+    
+}

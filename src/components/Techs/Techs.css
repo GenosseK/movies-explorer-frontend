@@ -75,3 +75,33 @@
     width: 90px;
     height: 60px;
 }
+
+@media screen and (max-width: 800px) {
+
+    .techs {
+        padding: 90px 50px;
+    }
+
+    .techs__container {
+        margin-top: 80px;
+    }
+
+    .techs__title {
+        margin-bottom: 22px;
+    }
+
+    .techs__text {
+        font-size: 12px;
+        line-height: 18px;
+        letter-spacing: -0.48px;
+    }
+
+    .techs__list {
+        margin-top: 83px;
+    }
+
+    .techs__item {
+        width: 84px;
+        height: 57px;
+    }
+}

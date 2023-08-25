@@ -86,3 +86,40 @@
     max-height: 327px;
     object-fit: cover;
 }
+
+@media screen and (max-width: 800px) {
+
+    .about-me {
+        padding: 90px 50px;
+    }
+
+    .about-me__name {
+        font-size: 40px;
+        line-height: 40px;
+        letter-spacing: -1.6px;
+    }
+
+    .about-me__job {
+        margin-top: 16px;
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .about-me__description {
+        margin-top: 20px;
+        font-size: 12px;
+        line-height: 18px;
+        max-width: 364px;
+    }
+
+    .about-me__links {
+        margin-top: 87px;
+
+    }
+
+    .about-me__image {
+        max-width: 255px;
+        max-height: 307px;
+    }
+
+}

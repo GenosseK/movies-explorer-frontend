@@ -81,3 +81,29 @@
 .card__loader-button:hover {
     opacity: 0.8;
 }
+
+@media screen and (max-width: 800px) {
+
+    .cards {
+        padding: 80px 30px 80px 30px;
+    }
+
+    .cards__grid {
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 30px 30px;
+        margin-bottom: 80px;
+    }
+
+    .card__image {
+        height: 190px;
+    }
+
+    .card__element {
+        padding: 14px;
+    }
+
+    .card__title {
+        margin-bottom: 15px;
+    }
+    
+}

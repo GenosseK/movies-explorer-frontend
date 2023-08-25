@@ -32,3 +32,11 @@
   min-height: 320px;
   position: absolute;
 }
+
+@media screen and (max-width: 800px) {
+  
+  .promo__container {
+    min-height: 768px;
+  }
+
+}

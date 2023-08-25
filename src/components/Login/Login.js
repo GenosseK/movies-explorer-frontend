@@ -4,7 +4,7 @@ import './Login.css';
 function Login() {
     return (
         <>
-            <Form greeting='Рады видеть!' button='Войти' question='Ещё не зарегистрированы?' path='signup' link='Регистрация'>
+            <Form greeting='Рады видеть!' button='Войти' question='Ещё не зарегистрированы?' path='/signup' link='Регистрация'>
 
                 <label className='form__item'>
                     <p className='form__item-text'>E-mail</p>

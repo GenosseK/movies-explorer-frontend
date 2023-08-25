@@ -110,3 +110,11 @@
     transform: translateX(16px);
     background-color: #A0A0A0;
 }
+
+@media screen and (max-width: 800px) {
+
+    .search {
+        padding: 80px 30px 60px 30px;
+    }
+    
+}

@@ -58,3 +58,12 @@
 .footer__nav-link:hover {
     opacity: 0.7;
 }
+
+@media screen and (max-width: 800px) {
+
+    .footer {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    
+}
