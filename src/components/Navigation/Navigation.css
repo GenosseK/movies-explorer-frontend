@@ -95,18 +95,106 @@
     background-color: #313131;
 }
 
-/*
-.navigation__links-left .navigation__link:last-child {
-    margin-right: 0;
+.navigation__hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
 }
 
-.navigation__links-left .navigation__link:nth-child(1) {
-    margin-right: 16px;
-    margin-left: 45px;
+.navigation__hamburger-bar {
+    width: 26px;
+    height: 3px;
+    background-color: #FFFFFF;
+    margin: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.navigation__hamburger-bar:nth-child(2) {
+    margin: 3px 0;
 }
 
 
-.navigation__links-right .navigation__link:nth-child(1) {
-    margin-right: 30px;
+.navigation__menu {
+    width: 67%;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    right: -67%;
+    bottom: 0;
+    transition: right 0.3s ease;
+    z-index: 1000;
 }
-*/
+
+.navigation__menu.open {
+    right: 0;
+}
+
+.navigation__close-button {
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.navigation__close-icon {
+    height: 22px;
+    width: 22px;
+    transition: opacity .3s ease;
+}
+
+.navigation__close-icon:hover {
+    opacity: .8;
+}
+
+.navigation__menu_links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 160px;
+}
+
+.navigation__menu_link {
+    color: #FFF;
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: 'Inter', sans-serif, Arial;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: none;
+    margin-bottom: 28px;
+    transition: opacity 0.3s ease;
+    padding-bottom: 2px;
+}
+
+.navigation__menu_link:hover {
+    opacity: 0.7;
+}
+
+.navigation__menu_link:last-of-type {
+    margin-bottom: 0;
+}
+
+.navigation__menu_link.active {
+    border-bottom: 2px solid rgba(218, 218, 218, 1);
+}
+
+.navigation__menu_account-button {
+    display: flex;
+    justify-content: center;
+    margin-top: calc(100vh - 40vh);
+    text-decoration: none;
+}

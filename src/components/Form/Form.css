@@ -42,6 +42,10 @@
     justify-content: space-between;
 }
 
+.form__item {
+    margin-top: 10px;
+}
+
 .form__item-text {
     color: #8B8B8B;
     font-family: 'Inter', sans-serif, Arial;
@@ -66,6 +70,7 @@
     font-weight: 400;
     line-height: normal;
     padding: 0 0 0 15px;
+    margin-bottom: 10px;
 }
 
 .form__error {
@@ -75,7 +80,8 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    margin: 10px 0 10px 0;
+    height: 12px;
+    display: block;
 }
 
 .form__button {
