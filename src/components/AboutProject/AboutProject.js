@@ -19,7 +19,7 @@ function AboutProject() {
 
             </div>
 
-            <div className='about__container'>
+            <div className='about__container about__container_timeline'>
 
                 <div className='about__timeline'>
                     <h4 className='about__timeline-title'>1 неделя</h4>

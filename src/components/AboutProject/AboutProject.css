@@ -84,7 +84,6 @@
     color: #8B8B8B;
     font-family: 'Inter', sans-serif, Arial;
     text-align: center;
-    font-family: Inter;
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
@@ -95,5 +94,70 @@
     .about {
         padding: 90px 50px;
     }
-    
+
+}
+
+@media screen and (max-width: 650px) {
+
+    .about {
+        padding: 70px 18px;
+    }
+
+    .about__header {
+        font-size: 18px;
+        letter-spacing: -0.72px;
+        padding-bottom: 28px;
+    }
+
+    .about__container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .about__container:first-of-type {
+        margin-top: 60px;
+    }
+
+    .about__container:last-of-type {
+        margin-top: 60px;
+    }
+
+    .about__info:first-of-type {
+        margin-right: 0px;
+        margin-bottom: 56px;
+    }
+
+    .about__info-title {
+        font-size: 18px;
+        letter-spacing: -0.72px;
+    }
+
+    .about__info-text {
+        margin-top: 16px;
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .about__container_timeline {
+        flex-direction: row;
+    }
+
+    .about__timeline:first-of-type {
+        width: 30%;
+    }
+
+    .about__timeline:last-of-type {
+        width: 70%;
+    }
+
+    .about__timeline-title {
+        padding: 11px 10px;
+        font-size: 11px;
+    }
+
+    .about__timeline-text {
+        font-size: 11px;
+        line-height: normal;
+
+    }
 }

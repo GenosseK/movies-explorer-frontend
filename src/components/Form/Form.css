@@ -42,7 +42,7 @@
     justify-content: space-between;
 }
 
-.form__item {
+.form__item:not(:first-child) {
     margin-top: 10px;
 }
 
@@ -115,4 +115,36 @@
     font-weight: 400;
     line-height: normal;
     margin: 0;
+}
+
+@media screen and (max-width: 420px) {
+
+    .form {
+        padding: 0 30px 30px 30px;
+    }
+
+    .form__container {
+        align-items: center;
+        max-width: 82%;
+    }
+    
+    .form__title {
+        margin-top: 50px;
+        margin-bottom: 80px;
+    }
+
+    .form__button {
+        margin-top: 157px;
+        margin-bottom: 14px;
+        font-size: 12px;
+    }
+
+    .form__link {
+        margin-left: 7px;
+    }
+
+    .form__text {
+        font-size: 12px;
+    }
+
 }

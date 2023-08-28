@@ -198,3 +198,12 @@
     margin-top: calc(100vh - 40vh);
     text-decoration: none;
 }
+
+@media screen and (max-width: 650px) {
+    
+    .navigation__menu {
+        width: 100%;
+        right: -100%;
+    }
+
+}

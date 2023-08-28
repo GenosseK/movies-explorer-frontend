@@ -107,3 +107,30 @@
     }
     
 }
+
+@media screen and (max-width: 650px) {
+
+    .cards {
+        padding: 50px 10px 50px 10px;
+    }
+
+    .cards__grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 14px;
+        margin-bottom: 76px;
+    }
+
+    .card__image {
+        height: 168px;
+    }
+
+    .card__title {
+        font-size: 12px;
+        margin-bottom: 14px;
+    }
+
+    .card__length {
+        font-size: 10px;
+    }
+
+}

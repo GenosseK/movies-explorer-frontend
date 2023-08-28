@@ -124,5 +124,31 @@
         margin-top: 96px;
         margin-bottom: 210px;
     }
-    
+
+}
+
+@media screen and (max-width: 420px) {
+
+    .profile {
+        padding-top: 70px;
+    }
+
+    .profile__form {
+        max-width: 81%;
+    }
+
+    .profile__inputs {
+        margin-top: 80px;
+        margin-bottom: 380px;
+    }
+
+    .profile__button {
+        font-size: 12px;
+        font-weight: 400;
+    }
+
+    .profile__link {
+        font-size: 12px;
+    }
+
 }

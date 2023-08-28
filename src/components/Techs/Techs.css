@@ -105,3 +105,41 @@
         height: 57px;
     }
 }
+
+@media screen and (max-width: 650px) {
+
+    .techs__list {
+        display: grid;
+        grid-template-columns: repeat(2, 84px);
+        margin-top: 50px;
+    }
+
+    .techs__header {
+        font-size: 18px;
+        letter-spacing: -0.72px;
+        padding-bottom: 28px;
+    }
+
+    .techs__container {
+        margin-top: 60px;
+    }
+
+    .techs__title {
+        font-size: 30px;
+        letter-spacing: -1.2px;
+        line-height: normal;
+        margin-bottom: 24px;
+    }
+
+    .techs__text {
+        font-size: 11px;
+        line-height: 16px;
+        letter-spacing: -0.44px;
+    }
+
+    .techs__item {
+        font-size: 12px;
+        letter-spacing: -0.48px;
+    }
+
+} 

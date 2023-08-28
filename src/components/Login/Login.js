@@ -21,14 +21,12 @@ function Login() {
                     <p className='form__item-text'>E-mail</p>
                     <input className='form__input' type='email' defaultValue='akazhanov72@yandex.ru' onInput={handleInputChange} required />
                     <span className='form__error'></span>
-                    <span className='form__error-placeholder'></span>
                 </label>
 
                 <label className='form__item'>
                     <p className='form__item-text'>Пароль</p>
                     <input className='form__input' type='password' defaultValue='••••••••••••••' minLength="2" maxLength="30" onInput={handleInputChange} required />
                     <span className='form__error'></span>
-                    <span className='form__error-placeholder'></span>
                 </label>
                 
             </Form>

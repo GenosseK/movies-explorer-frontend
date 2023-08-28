@@ -118,3 +118,24 @@
     }
     
 }
+
+@media screen and (max-width: 650px) {
+
+    .search {
+        padding: 70px 14px 50px 14px;
+    }
+    
+    .search__container {
+        min-height: 46px;
+    }
+
+    .search__input {
+        padding-left: 19px;
+        font-size: 11px;
+    }
+
+    .search__toggle-title {
+        font-size: 11px;
+    }
+
+}

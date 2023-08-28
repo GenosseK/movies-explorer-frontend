@@ -36,3 +36,18 @@
 .navigation__button:hover {
     opacity: 0.8;
 }
+
+@media screen and (max-width: 650px) {
+
+    .navigation__link {
+        font-size: 10px;
+    }
+    
+    .navigation__button {
+        padding: 5px 12px;
+    }
+
+    .navigation__link {
+        margin-right: 14px;
+    }
+}
