@@ -8,43 +8,43 @@ import spirited_away from '../images/spirited-away.jpg';
 import la_haine from '../images/la-haine.jpg';
 export const cards = [
   {
-    name: 'Криминальное чтиво',
-    time: '1ч42м',
+    title: 'Криминальное чтиво',
+    length: '1ч42м',
     image: pulp_fiction,
   },
   {
-    name: 'Отель "Гранд Будапешт"',
-    time: '1ч42м',
+    title: 'Отель "Гранд Будапешт"',
+    length: '1ч42м',
     image: grand_hotel,
   },
   {
-    name: 'Бойцовский клуб',
-    time: '1ч42м',
+    title: 'Бойцовский клуб',
+    length: '1ч42м',
     image: fight_club,
   },
   {
-    name: 'Wall-E',
-    time: '1ч42м',
+    title: 'Wall-E',
+    length: '1ч42м',
     image: wall_e,
   },
   {
-    name: 'Голова ластик',
-    time: '1ч42м',
+    title: 'Голова ластик',
+    length: '1ч42м',
     image: eraserhead,
   },
   {
-    name: 'Паприки',
-    time: '1ч42м',
+    title: 'Паприка',
+    length: '1ч42м',
     image: paprika,
   },
   {
-    name: 'Унесённые призраками',
-    time: '1ч42м',
+    title: 'Унесённые призраками',
+    length: '1ч42м',
     image: spirited_away,
   },
   {
-    name: 'Ненависть',
-    time: '1ч42м',
+    title: 'Ненависть',
+    length: '1ч42м',
     image: la_haine,
   },
 ]
