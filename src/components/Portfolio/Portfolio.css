@@ -41,7 +41,7 @@
     line-height: 50px;
     letter-spacing: -1.2px;
     text-decoration: none;
-    transition: opacity .9s easy;
+    transition: opacity .9s ease;
 }
 
 .portfolio__link:hover {
