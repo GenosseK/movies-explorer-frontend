@@ -15,22 +15,19 @@ function Register() {
 
     return (
         <>
-            <Form greeting='Добро пожаловать!' button='Зарегестрироваться' question='Уже зарегистрированы?' path='/signin' link='Войти'>
+            <Form greeting='Добро пожаловать!' button='Зарегистрироваться' question='Уже зарегистрированы?' path='/signin' link='Войти'>
 
-                <label className='form__item'>
-                    <p className='form__item-text'>Имя</p>
-                    <input className='form__input' type='name' defaultValue='Алексей' minLength="2" maxLength="30" required onInput={handleInputChange} />
+                <label className='form__item'>Имя
+                    <input className='form__input' type='text' defaultValue='Алексей' minLength="2" maxLength="30" required onInput={handleInputChange} />
                     <span className='form__error'></span>
                 </label>
 
-                <label className='form__item'>
-                    <p className='form__item-text'>E-mail</p>
+                <label className='form__item'>E-mail
                     <input className='form__input' type='email' defaultValue='akazhanov72@yandex.ru' required onInput={handleInputChange} />
                     <span className='form__error'></span>
                 </label>
 
-                <label className='form__item'>
-                    <p className='form__item-text'>Пароль</p>
+                <label className='form__item'>Пароль
                     <input className='form__input' type='password' defaultValue='••••••••••••••' minLength='2' maxLength='30' required onInput={handleInputChange} />
                     <span className='form__error'></span>
                 </label>

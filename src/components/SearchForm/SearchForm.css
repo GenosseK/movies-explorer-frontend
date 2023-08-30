@@ -19,6 +19,12 @@
     background-color: #2F2F2F;
 }
 
+.search__container:focus-within {
+    outline: 1px solid #fff;
+    /* Другие стили для контейнера при фокусе */
+}
+
+
 .search__input {
     font-feature-settings: 'clig' off, 'liga' off;
     font-family: 'Inter', sans-serif, Arial;

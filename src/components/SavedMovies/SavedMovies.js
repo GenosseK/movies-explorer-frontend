@@ -7,10 +7,12 @@ import './SavedMovies.css';
 function SavedMovies({ loggedIn, headerColor }) {
     return (
         <>
-        <Header loggedIn={loggedIn} headerColor={headerColor} />
-        <SearchForm />
-        <MoviesCardList />
-        <Footer />
+            <Header loggedIn={loggedIn} headerColor={headerColor} />
+            <main>
+                <SearchForm />
+                <MoviesCardList />
+            </main>
+            <Footer />
         </>
     )
 };

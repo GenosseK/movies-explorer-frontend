@@ -16,7 +16,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(true);
 
   return (
-    <div className="App">
+    <div className="page">
       <Routes>
         <Route path='/' element={<Main loggedIn={loggedIn} headerColor="blue" />} />
         <Route path='/movies' element={<Movies loggedIn={loggedIn} headerColor="black" />} />

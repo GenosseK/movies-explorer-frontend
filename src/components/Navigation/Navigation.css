@@ -48,6 +48,7 @@
     align-items: center;
     cursor: pointer;
     transition: opacity .3s ease;
+    text-decoration: none;
 }
 
 .navigation__profile-button:hover {
@@ -196,7 +197,6 @@
     display: flex;
     justify-content: center;
     margin-top: calc(100vh - 40vh);
-    text-decoration: none;
 }
 
 @media screen and (max-width: 650px) {

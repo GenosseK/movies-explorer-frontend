@@ -11,14 +11,16 @@ import Techs from "../../Techs/Techs";
 function Main({ loggedIn, headerColor }) {
     return (
         <>
-        <Header loggedIn={loggedIn} headerColor={headerColor} />
-        <Promo />
-        <NavTab />
-        <AboutProject />
-        <Techs />
-        <AboutMe />
-        <Portfolio />
-        <Footer />
+            <Header loggedIn={loggedIn} headerColor={headerColor} />
+            <main>
+                <Promo />
+                <NavTab />
+                <AboutProject />
+                <Techs />
+                <AboutMe />
+                <Portfolio />
+            </main>
+            <Footer />
         </>
     )
 };

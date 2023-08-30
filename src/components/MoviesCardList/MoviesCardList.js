@@ -2,7 +2,6 @@ import React from 'react';
 import MovieCard from '../MovieCard/MovieCard';
 import { cards } from '../../utils/constants';
 import './MoviesCardList.css';
-import like from '../../images/heart-active.svg';
 import Preloader from '../Preloader/Preloader';
 
 function MoviesCardList() {
@@ -23,8 +22,8 @@ function MoviesCardList() {
                 ))}
             </ul>
             {isLoading ? (<Preloader />) : (
-                <div className='card__button-container'>
-                    <button className='card__loader-button' type='button' onClick={handlePreloader}>Ещё</button>
+                <div className='cards__button-container'>
+                    <button className='cards__loader-button' type='button' onClick={handlePreloader}>Ещё</button>
                 </div>)}
         </section>
     )

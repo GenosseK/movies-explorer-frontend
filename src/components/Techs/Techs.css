@@ -110,7 +110,7 @@
 
     .techs__list {
         display: grid;
-        grid-template-columns: repeat(2, 84px);
+        grid-template-columns: repeat(4, 84px);
         margin-top: 50px;
     }
 
@@ -142,4 +142,14 @@
         letter-spacing: -0.48px;
     }
 
-} 
+}
+
+@media screen and (max-width: 475px) {
+
+    .techs__list {
+        display: grid;
+        grid-template-columns: repeat(2, 84px);
+        margin-top: 50px;
+    }
+
+}

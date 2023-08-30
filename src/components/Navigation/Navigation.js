@@ -57,12 +57,12 @@ function Navigation({ headerColor }) {
                             <Link className={`navigation__menu_link ${location.pathname === '/saved-movies' ? 'active' : ''}`} to='/saved-movies'>Сохранённые фильмы</Link>
 
                         </div>
-                        <Link to="/profile" className="navigation__menu_account-button">
-                            <button className="navigation__profile-button navigation__profile-button_black">
+                        <div className="navigation__menu_account-button">
+                        <Link to="/profile" className="navigation__profile-button navigation__profile-button_black">
                                 <p className="navigation__profile-button_text">Аккаунт</p>
                                 <img className="navigation__profile-button_image navigation__profile-button_image_black" src={account_button} alt="Аккаунт" />
-                            </button>
                         </Link>
+                        </div>
                     </div>
                 </>
             ) : (
@@ -76,11 +76,9 @@ function Navigation({ headerColor }) {
                         </Link>
                     </div>
                     <div className="navigation__links-right">
-                        <Link to="/profile" className="navigation__profile-link">
-                            <button className={profileButtonClass}>
+                        <Link to="/profile" className={`navigation__profile-link ${profileButtonClass}`}>
                                 <p className="navigation__profile-button_text">Аккаунт</p>
                                 <img className={profileImageClass} src={account_button} alt="Аккаунт" />
-                            </button>
                         </Link>
                     </div>
                 </div>
