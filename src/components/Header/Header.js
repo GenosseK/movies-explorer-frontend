@@ -6,7 +6,7 @@ import NavAuth from "../NavAuth/NavAuth";
 
 function Header({ loggedIn, headerColor }) {
 
-  const headerClass = `header ${headerColor === "blue" ? "header__blue" : "header__black"}`;
+  const headerClass = `header ${headerColor === "blue" ? "header_blue" : "header_black"}`;
 
   return (
     <header className={headerClass}>

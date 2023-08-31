@@ -1,11 +1,11 @@
-.navigation__loggedIn {
+.header__navigation {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
 }
 
-.navigation__link {
+.header__link {
     font-family: 'Inter', sans-serif, Arial;
     font-size: 12px;
     font-weight: 500;
@@ -16,28 +16,11 @@
     transition: opacity .3s ease;
 }
 
-.navigation__link:hover {
+.header__link:hover {
     opacity: 0.7;
 }
 
-.navigation__button {
-    padding: 8px 20px;
-    background-color: #2BE080;
-    font-family: 'Inter', sans-serif, Arial;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 16px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: opacity .3s ease;
-}
-
-.navigation__button:hover {
-    opacity: 0.8;
-}
-
-.navigation__profile-button {
+.header__profile-button {
     border: none;
     width: 100px;
     height: 32px;
@@ -55,15 +38,15 @@
     opacity: 0.8;
 }
 
-.navigation__profile-button_blue {
+.header__profile-button_blue {
     background: #073042;
 }
 
-.navigation__profile-button_black {
+.header__profile-button_black {
     background: #202020;
 }
 
-.navigation__profile-button_text {
+.header__profile-button-text {
     color: #FFF;
     font-feature-settings: 'clig' off, 'liga' off;
     font-family: 'Inter', sans-serif, Arial;
@@ -77,26 +60,22 @@
     text-decoration-line: none;
 }
 
-.navigation__profile-button_image {
+.header__profile-button-image {
     border-radius: 50px;
     height: 10px;
     width: 10px;
     padding: 7.8px;
 }
 
-.navigation__profile-link {
-    text-decoration: none;
-}
-
-.navigation__profile-button_image_blue {
+.header__profile-button-image_blue {
     background-color: #0F4157;
 }
 
-.navigation__profile-button_image_black {
+.header__profile-button-image_black {
     background-color: #313131;
 }
 
-.navigation__hamburger {
+.header__hamburger {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -110,7 +89,7 @@
     margin: 0;
 }
 
-.navigation__hamburger-bar {
+.header__hamburger-bar {
     width: 26px;
     height: 3px;
     background-color: #FFFFFF;
@@ -118,12 +97,12 @@
     transition: background-color 0.3s ease;
 }
 
-.navigation__hamburger-bar:nth-child(2) {
+.header__hamburger-bar:nth-child(2) {
     margin: 3px 0;
 }
 
 
-.navigation__menu {
+.header__menu {
     width: 67%;
     background-color: #202020;
     position: fixed;
@@ -134,11 +113,11 @@
     z-index: 1000;
 }
 
-.navigation__menu.open {
+.header__menu.open {
     right: 0;
 }
 
-.navigation__close-button {
+.header__close-button {
     position: absolute;
     top: 22px;
     right: 22px;
@@ -149,24 +128,24 @@
     cursor: pointer;
 }
 
-.navigation__close-icon {
+.header__close-icon {
     height: 22px;
     width: 22px;
     transition: opacity .3s ease;
 }
 
-.navigation__close-icon:hover {
+.header__close-icon:hover {
     opacity: .8;
 }
 
-.navigation__menu_links {
+.header__menu-links {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 160px;
 }
 
-.navigation__menu_link {
+.header__menu-link {
     color: #FFF;
     text-align: center;
     font-feature-settings: 'clig' off, 'liga' off;
@@ -181,19 +160,19 @@
     padding-bottom: 2px;
 }
 
-.navigation__menu_link:hover {
+.header__menu-link:hover {
     opacity: 0.7;
 }
 
-.navigation__menu_link:last-of-type {
+.header__menu-link:last-of-type {
     margin-bottom: 0;
 }
 
-.navigation__menu_link.active {
+.header__menu-link.active {
     border-bottom: 2px solid rgba(218, 218, 218, 1);
 }
 
-.navigation__menu_account-button {
+.header__account-button {
     display: flex;
     justify-content: center;
     margin-top: calc(100vh - 40vh);
@@ -201,7 +180,7 @@
 
 @media screen and (max-width: 650px) {
     
-    .navigation__menu {
+    .header__menu {
         width: 100%;
         right: -100%;
     }

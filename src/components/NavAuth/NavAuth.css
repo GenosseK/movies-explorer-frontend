@@ -1,11 +1,11 @@
-.navigation__auth {
+.header__auth {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     width: 100%;
 }
 
-.navigation__link {
+.header__link {
     font-family: 'Inter', sans-serif, Arial;
     font-size: 12px;
     font-weight: 500;
@@ -16,11 +16,11 @@
     transition: opacity .3s ease;
 }
 
-.navigation__link:hover {
+.header__link:hover {
     opacity: 0.7;
 }
 
-.navigation__button {
+.header__button {
     padding: 8px 20px;
     background-color: #2BE080;
     font-family: 'Inter', sans-serif, Arial;
@@ -33,21 +33,21 @@
     transition: opacity .3s ease;
 }
 
-.navigation__button:hover {
+.header__button:hover {
     opacity: 0.8;
 }
 
 @media screen and (max-width: 650px) {
 
-    .navigation__link {
+    .header__link {
         font-size: 10px;
     }
     
-    .navigation__button {
+    .header__button {
         padding: 5px 12px;
     }
 
-    .navigation__link {
+    .header__link {
         margin-right: 14px;
     }
 }

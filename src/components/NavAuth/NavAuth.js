@@ -3,10 +3,10 @@ import './NavAuth.css';
 
 function NavAuth() {
     return (
-        <div className='navigation__auth'>
-            <Link to='/signup' className='navigation__link'>Регистрация</Link>
+        <div className='header__auth'>
+            <Link to='/signup' className='header__link'>Регистрация</Link>
             <Link to='/signin'>
-                <button className='navigation__button'>Войти</button>
+                <button className='header__button'>Войти</button>
             </Link>
         </div>
     )

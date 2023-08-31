@@ -32,52 +32,52 @@ function Navigation({ headerColor }) {
         setIsMenuOpen(false);
     }
 
-    const profileButtonClass = `navigation__profile-button ${headerColor === "blue" ? "navigation__profile-button_blue" : "navigation__profile-button_black"
+    const profileButtonClass = `header__profile-button ${headerColor === "blue" ? "header__profile-button_blue" : "header__profile-button_black"
         }`;
 
-    const profileImageClass = `navigation__profile-button_image ${headerColor === "blue" ? "navigation__profile-button_image_blue" : "navigation__profile-button_image_black"
+    const profileImageClass = `header__profile-button-image ${headerColor === "blue" ? "header__profile-button-image_blue" : "header__profile-button-image_black"
         }`;
 
     return (
         <>
             {screenWidth <= 800 ? (
                 <>
-                    <button className="navigation__hamburger" onClick={handleHamburgerClick}>
-                        <span className="navigation__hamburger-bar"></span>
-                        <span className="navigation__hamburger-bar"></span>
-                        <span className="navigation__hamburger-bar"></span>
+                    <button className="header__hamburger" onClick={handleHamburgerClick}>
+                        <span className="header__hamburger-bar"></span>
+                        <span className="header__hamburger-bar"></span>
+                        <span className="header__hamburger-bar"></span>
                     </button>
-                    <div className={`navigation__menu ${isMenuOpen ? "open" : ""}`}>
-                        <button className="navigation__close-button" onClick={handleCloseClick}>
-                            <img src={cross} alt="Закрыть" className="navigation__close-icon" />
+                    <div className={`header__menu ${isMenuOpen ? "open" : ""}`}>
+                        <button className="header__close-button" onClick={handleCloseClick}>
+                            <img src={cross} alt="Закрыть" className="header__close-icon" />
                         </button>
-                        <div className="navigation__menu_links">
-                            <Link className={`navigation__menu_link ${location.pathname === '/' ? 'active' : ''}`} to='/'>Главная</Link>
-                            <Link className={`navigation__menu_link ${location.pathname === '/movies' ? 'active' : ''}`} to='/movies'>Фильмы</Link>
-                            <Link className={`navigation__menu_link ${location.pathname === '/saved-movies' ? 'active' : ''}`} to='/saved-movies'>Сохранённые фильмы</Link>
+                        <div className="header__menu-links">
+                            <Link className={`header__menu-link ${location.pathname === '/' ? 'active' : ''}`} to='/'>Главная</Link>
+                            <Link className={`header__menu-link ${location.pathname === '/movies' ? 'active' : ''}`} to='/movies'>Фильмы</Link>
+                            <Link className={`header__menu-link ${location.pathname === '/saved-movies' ? 'active' : ''}`} to='/saved-movies'>Сохранённые фильмы</Link>
 
                         </div>
-                        <div className="navigation__menu_account-button">
-                        <Link to="/profile" className="navigation__profile-button navigation__profile-button_black">
-                                <p className="navigation__profile-button_text">Аккаунт</p>
-                                <img className="navigation__profile-button_image navigation__profile-button_image_black" src={account_button} alt="Аккаунт" />
+                        <div className="header__account-button">
+                        <Link to="/profile" className="header__profile-button header__profile-button_black">
+                                <p className="header__profile-button-text">Аккаунт</p>
+                                <img className="header__profile-button-image header__profile-button-image_black" src={account_button} alt="Аккаунт" />
                         </Link>
                         </div>
                     </div>
                 </>
             ) : (
-                <div className="navigation__loggedIn">
-                    <div className="navigation__links-left">
-                        <Link to="/movies" className="navigation__link">
+                <div className="header__navigation">
+                    <div className="header__links-left">
+                        <Link to="/movies" className="header__link">
                             Фильмы
                         </Link>
-                        <Link to="/saved-movies" className="navigation__link">
+                        <Link to="/saved-movies" className="header__link">
                             Сохранённые фильмы
                         </Link>
                     </div>
-                    <div className="navigation__links-right">
-                        <Link to="/profile" className={`navigation__profile-link ${profileButtonClass}`}>
-                                <p className="navigation__profile-button_text">Аккаунт</p>
+                    <div className="header__links-right">
+                        <Link to="/profile" className={`header__profile-link ${profileButtonClass}`}>
+                                <p className="header__profile-button-text">Аккаунт</p>
                                 <img className={profileImageClass} src={account_button} alt="Аккаунт" />
                         </Link>
                     </div>

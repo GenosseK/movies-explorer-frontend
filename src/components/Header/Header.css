@@ -5,11 +5,11 @@
     gap: 45px;
 }
 
-.header__blue {
+.header_blue {
     background: rgba(7, 48, 66, 1);
 }
 
-.header__black {
+.header_black {
     background: #202020;
 }
 

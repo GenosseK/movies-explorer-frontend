@@ -22,7 +22,7 @@
     margin-right: 0;
 }
 
-.navtab__link_text {
+.navtab__link-text {
     color: #FFF;
     font-family: 'Inter', sans-serif, Arial;
     font-size: 13px;
@@ -31,10 +31,9 @@
     line-height: 16px;
     text-decoration-line: underline;
     transition: opacity .3s ease;
-   /* position: relative; */
 }
 
-.navtab__link_text:hover {
+.navtab__link-text:hover {
     opacity: 0.7;
 }
 
@@ -43,7 +42,7 @@
         margin-right: 24px;
     }
 
-    .navtab__link_text {
+    .navtab__link-text {
         font-size: 11px;
     }
 }
