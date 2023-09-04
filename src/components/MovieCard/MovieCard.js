@@ -1,7 +1,7 @@
 import React from 'react';
 import './MovieCard.css';
 
-function MovieCard({ card }) {
+function MovieCard({ movie }) {
 
     const [isLiked, setIsLiked] = React.useState(false);
 
@@ -13,16 +13,16 @@ function MovieCard({ card }) {
 
     return (
         <li className='card'>
-        <img className='card__image' src={card.image} alt={card.title}></img>
-        <div className='card__element'>
-            <div className='card__info'>
-                <h2 className='card__title'>{card.title}</h2>
-                <p className='card__length'>{card.length}</p>
+            <img className='card__image' src={`https://api.nomoreparties.co/${movie.image.url}`} alt={movie.nameRU}></img>
+            <div className='card__element'>
+                <div className='card__info'>
+                    <h2 className='card__title'>{movie.nameRU}</h2>
+                    <p className='card__length'>{Math.floor(movie.duration / 60)}ч {movie.duration % 60}м</p>
+                </div>
+                <button className={likeButtonClassName} aria-label='Сохранить' type='button' onClick={handleLikeClick}></button>
             </div>
-            <button className={likeButtonClassName} aria-label='Сохранить' type='button' onClick={handleLikeClick}></button>
-        </div>
-    </li>
-    )   
+        </li>
+    )
 };
 
 export default MovieCard;

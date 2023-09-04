@@ -48,3 +48,9 @@ export const cards = [
     image: la_haine,
   },
 ]
+
+export const BEATFILM_URL = 'https://api.nomoreparties.co/beatfilm-movies';
+export const BASE_URL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:3001'
+    : 'https://api.genoss.movie-explorer.nomoreparties.co';

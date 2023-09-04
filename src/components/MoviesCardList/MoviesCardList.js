@@ -4,7 +4,7 @@ import { cards } from '../../utils/constants';
 import './MoviesCardList.css';
 import Preloader from '../Preloader/Preloader';
 
-function MoviesCardList() {
+function MoviesCardList({ filteredMovies }) {
 
     const [isLoading, setLoading] = React.useState(false);
 
@@ -15,10 +15,8 @@ function MoviesCardList() {
     return (
         <section className="cards">
             <ul className='cards__grid'>
-                {cards.slice().map((card, i) => (
-                    <MovieCard
-                        card={card}
-                    />
+                {filteredMovies.map((movie) => (
+                    <MovieCard movie={movie} key={movie.id} />
                 ))}
             </ul>
             {isLoading ? (<Preloader />) : (
