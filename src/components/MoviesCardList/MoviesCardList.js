@@ -4,7 +4,7 @@ import { cards } from '../../utils/constants';
 import './MoviesCardList.css';
 import Preloader from '../Preloader/Preloader';
 
-function MoviesCardList({ filteredMovies }) {
+function MoviesCardList({ filteredMovies, isInfoTooltip }) {
 
     const [isLoading, setLoading] = React.useState(false);
 
@@ -14,15 +14,22 @@ function MoviesCardList({ filteredMovies }) {
 
     return (
         <section className="cards">
-            <ul className='cards__grid'>
-                {filteredMovies.map((movie) => (
-                    <MovieCard movie={movie} key={movie.id} />
-                ))}
-            </ul>
-            {isLoading ? (<Preloader />) : (
-                <div className='cards__button-container'>
-                    <button className='cards__loader-button' type='button' onClick={handlePreloader}>Ещё</button>
-                </div>)}
+            {isInfoTooltip ? (
+                <p className="info-tooltip">Ничего не найдено</p>
+            ) : (
+                <ul className="cards__grid">
+                    {filteredMovies.map((movie) => (
+                        <MovieCard movie={movie} key={movie.id} />
+                    ))}
+                </ul>
+            )}
+            {filteredMovies.length > 0 && ( // Conditionally render if there are found movies
+                isLoading ? (<Preloader />) : (
+                    <div className='cards__button-container'>
+                        <button className='cards__loader-button' type='button' onClick={handlePreloader}>Ещё</button>
+                    </div>
+                ))
+            }
         </section>
     )
 }

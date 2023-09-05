@@ -1,6 +1,6 @@
 import "./SearchForm.css";
 
-function SearchForm({ movieSearch, searchInput, setSearchInput }) {
+function SearchForm({ movieSearch, searchInput, setSearchInput, handleToggleShortMovies, shortMoviesOnly }) {
     const handleSearch = (e) => {
         e.preventDefault();
         movieSearch(searchInput);
@@ -21,7 +21,8 @@ function SearchForm({ movieSearch, searchInput, setSearchInput }) {
             </div>
             <div className="search__toggle">
                 <label className="search__tumbler">
-                    <input type="checkbox" className="search__checkbox" />
+                    <input type="checkbox" className="search__checkbox" checked={shortMoviesOnly} // Bind to the state variable
+                        onChange={handleToggleShortMovies} />
                     <span className="search__slider" />
                 </label>
                 <p className="search__toggle-title">Короткометражки</p>

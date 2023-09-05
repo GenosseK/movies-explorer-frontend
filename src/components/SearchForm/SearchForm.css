@@ -91,10 +91,9 @@
 .search__slider {
     position: absolute;
     inset: 0;
-    background-color: #3DDC84;
+    background-color: #343434;
     border-radius: 16px;
     transition: .5s;
-    transform: scale(-1, -1);
 }
 
 .search__slider::before {
@@ -105,16 +104,16 @@
     left: 1px;
     bottom: 2px;
     border-radius: 50%;
-    background-color: #FFFFFF;
+    background-color: #A0A0A0;
 }
 
 .search__checkbox:checked+.search__slider {
-    background-color: #343434;
+    background-color: #3DDC84;
 }
 
 .search__checkbox:checked+.search__slider::before {
     transform: translateX(16px);
-    background-color: #A0A0A0;
+    background-color: #FFFFFF;
 }
 
 @media screen and (max-width: 800px) {
