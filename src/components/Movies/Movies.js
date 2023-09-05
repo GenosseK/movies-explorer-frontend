@@ -18,6 +18,35 @@ function Movies({
   const [shortMoviesOnly, setShortMoviesOnly] = useState(false);
   const [isInfoTooltip, setIsInfoTooltip] = useState(false);
 
+  const loadFromLocalStorage = () => {
+    const savedSearchInput = localStorage.getItem("searchInput");
+    const savedShortMoviesOnly = localStorage.getItem("shortMoviesOnly");
+    const savedFilteredMovies = JSON.parse(localStorage.getItem("filteredMovies"));
+    const savedIsInfoTooltip = localStorage.getItem("isInfoTooltip");
+
+    if (savedSearchInput) {
+      setSearchInput(savedSearchInput);
+    }
+
+    if (savedShortMoviesOnly) {
+      setShortMoviesOnly(savedShortMoviesOnly === "true");
+    }
+
+    if (savedFilteredMovies) {
+      setFilteredMovies(savedFilteredMovies);
+    }
+
+    if (savedIsInfoTooltip) {
+      setIsInfoTooltip(savedIsInfoTooltip === "true");
+    }
+
+  };
+
+  useEffect(() => {
+    // Load data from local storage when the component mounts
+    loadFromLocalStorage();
+  }, []);
+
   const movieSearch = (query) => {
     const lowercaseSearch = query.toLowerCase();
   
@@ -46,6 +75,11 @@ function Movies({
     } else {
       setIsInfoTooltip(false);
     }
+
+    localStorage.setItem("searchInput", query);
+    localStorage.setItem("shortMoviesOnly", shortMoviesOnly.toString());
+    localStorage.setItem("filteredMovies", JSON.stringify(filteredBySearch));
+    localStorage.setItem("isInfoTooltip", isInfoTooltip.toString());
   };
 
   const handleToggleShortMovies = () => {

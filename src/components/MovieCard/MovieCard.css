@@ -10,6 +10,7 @@
     height: 203px;
     width: 100%;
     object-fit: fill;
+    cursor: pointer;
 }
 
 .card__element {

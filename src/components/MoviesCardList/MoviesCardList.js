@@ -15,7 +15,9 @@ function MoviesCardList({ filteredMovies, isInfoTooltip }) {
     return (
         <section className="cards">
             {isInfoTooltip ? (
-                <p className="info-tooltip">Ничего не найдено</p>
+                <div className='cards__info-tooltip'>
+                <p className="cards__info-tooltip_text">Ничего не найдено</p>
+                </div>
             ) : (
                 <ul className="cards__grid">
                     {filteredMovies.map((movie) => (

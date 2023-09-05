@@ -1,6 +1,8 @@
 .cards {
     background-color: #202020;
     padding: 80px 70px 80px 70px;
+    min-height: 30.6vh;
+    position: relative;
 }
 
 .cards__grid {
@@ -10,6 +12,24 @@
     list-style: none;
     padding: 0;
     margin: 0 auto 60px;
+}
+
+.cards__info-tooltip {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.cards__info-tooltip_text {
+    font-family: 'Inter', sans-serif, Arial;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 12px;
+    color: #FFF;
+    text-align: center;
+    margin: 0;
 }
 
 .cards__loader-button {
@@ -44,7 +64,7 @@
         gap: 30px 30px;
         margin-bottom: 80px;
     }
-    
+
 }
 
 @media screen and (max-width: 650px) {
