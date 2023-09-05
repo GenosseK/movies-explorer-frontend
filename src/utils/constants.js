@@ -9,42 +9,42 @@ import la_haine from '../images/la-haine.jpg';
 export const cards = [
   {
     title: 'Криминальное чтиво',
-    length: '1ч42м',
+    length: '1ч 42м',
     image: pulp_fiction,
   },
   {
     title: 'Отель "Гранд Будапешт"',
-    length: '1ч42м',
+    length: '1ч 42м',
     image: grand_hotel,
   },
   {
     title: 'Бойцовский клуб',
-    length: '1ч42м',
+    length: '1ч 42м',
     image: fight_club,
   },
   {
     title: 'Wall-E',
-    length: '1ч42м',
+    length: '1ч 42м',
     image: wall_e,
   },
   {
     title: 'Голова ластик',
-    length: '1ч42м',
+    length: '1ч 42м',
     image: eraserhead,
   },
   {
     title: 'Паприка',
-    length: '1ч42м',
+    length: '1ч 42м',
     image: paprika,
   },
   {
     title: 'Унесённые призраками',
-    length: '1ч42м',
+    length: '1ч 42м',
     image: spirited_away,
   },
   {
     title: 'Ненависть',
-    length: '1ч42м',
+    length: '1ч 42м',
     image: la_haine,
   },
 ]
