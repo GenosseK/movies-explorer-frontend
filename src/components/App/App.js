@@ -36,7 +36,7 @@ function App() {
     loadMovies();
   }, []);
 
-  const saveMovie = (movieData) => {
+  function saveMovie(movieData) {
     mainApi
       .saveMovie(movieData)
       .then((savedMovie) => {

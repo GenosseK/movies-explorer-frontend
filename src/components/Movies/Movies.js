@@ -12,7 +12,7 @@ function Movies({
   movies,
   isInfoTooltip,
   setIsInfoTooltip,
-  saveMovie,
+  onSaveMovie,
 }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -104,7 +104,7 @@ function Movies({
           handleToggleShortMovies={handleToggleShortMovies}
           shortMoviesOnly={shortMoviesOnly}
         />
-        <MoviesCardList filteredMovies={filteredMovies} isInfoTooltip={isInfoTooltip} onSaveMovie={saveMovie} />
+        <MoviesCardList filteredMovies={filteredMovies} isInfoTooltip={isInfoTooltip} onSaveMovie={onSaveMovie} />
       </main>
       <Footer />
     </>
