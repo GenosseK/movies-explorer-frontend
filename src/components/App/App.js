@@ -10,6 +10,7 @@ import Register from "../Register/Register";
 import Login from "../Login/Login";
 import PageNotFound from "../PageNotFound/PageNotFound";
 import moviesApi from "../../utils/MoviesApi";
+import mainApi from "../../utils/MainApi";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
@@ -24,12 +25,30 @@ function App() {
       .then((movie) => {
         setMovieList(movie);
       })
-      .catch(console.error);
+      .catch(() =>
+        setIsInfoTooltip(
+          "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"
+        )
+      );
   }
 
   useEffect(() => {
     loadMovies();
   }, []);
+
+  const saveMovie = (movieData) => {
+    mainApi
+      .saveMovie(movieData)
+      .then((savedMovie) => {
+        // Handle the success response if needed
+        console.log('Movie saved:', savedMovie);
+        // You can update the state or perform other actions here
+      })
+      .catch((error) => {
+        // Handle any errors here
+        console.error('Error saving movie:', error);
+      });
+  };
 
   return (
     <div className="page">
@@ -46,13 +65,14 @@ function App() {
               setIsInfoTooltip={setIsInfoTooltip}
               isInfoTooltip={isInfoTooltip}
               movies={movieList}
+              onSaveMovie={saveMovie}
               headerColor="black"
             />
           }
         />
         <Route
           path="/saved-movies"
-          element={<SavedMovies loggedIn={loggedIn} headerColor="black" />}
+          element={<SavedMovies loggedIn={loggedIn} headerColor="black" setIsInfoTooltip={setIsInfoTooltip} isInfoTooltip={isInfoTooltip} />}
         />
         <Route
           path="/profile"

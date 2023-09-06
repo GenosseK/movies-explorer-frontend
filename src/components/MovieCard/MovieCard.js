@@ -1,10 +1,15 @@
 import React from "react";
 import "./MovieCard.css";
 
-function MovieCard({ movie }) {
+function MovieCard({ movie, saveMovie }) {
   const [isLiked, setIsLiked] = React.useState(false);
 
   const handleLikeClick = () => {
+    if (!isLiked) {
+      console.log("Movie not liked. Saving...", movie);
+      // Call the saveMovie function if the movie is not liked
+      saveMovie(movie);
+    }
     setIsLiked(!isLiked);
   };
 

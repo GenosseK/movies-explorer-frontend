@@ -10,13 +10,15 @@ function Movies({
   loggedIn,
   headerColor,
   movies,
+  isInfoTooltip,
+  setIsInfoTooltip,
+  saveMovie,
 }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [searchInput, setSearchInput] = useState("");
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [shortMoviesOnly, setShortMoviesOnly] = useState(false);
-  const [isInfoTooltip, setIsInfoTooltip] = useState(false);
 
   const loadFromLocalStorage = () => {
     const savedSearchInput = localStorage.getItem("searchInput");
@@ -37,7 +39,7 @@ function Movies({
     }
 
     if (savedIsInfoTooltip) {
-      setIsInfoTooltip(savedIsInfoTooltip === "true");
+      setIsInfoTooltip(savedIsInfoTooltip);
     }
 
   };
@@ -49,31 +51,29 @@ function Movies({
 
   const movieSearch = (query) => {
     const lowercaseSearch = query.toLowerCase();
-  
+
     if (!query) {
       setFilteredMovies([]);
       return;
     }
-  
+
     // Apply the filter based on the 'shortMoviesOnly' state first
     const filteredByDuration = shortMoviesOnly
       ? movies.filter((movie) => movie.duration < 40)
       : movies;
-  
+
     // Then apply the search query filter
     const filteredBySearch = filteredByDuration.filter(
       (movie) =>
         movie.nameRU.toLowerCase().includes(lowercaseSearch) ||
         movie.nameEN.toLowerCase().includes(lowercaseSearch)
     );
-  
+
     setFilteredMovies(filteredBySearch);
-  
+
     // Check if there are no search results and set isInfoTooltip to true
     if (filteredBySearch.length === 0) {
-      setIsInfoTooltip(true);
-    } else {
-      setIsInfoTooltip(false);
+      setIsInfoTooltip('Ничего не найдено');
     }
 
     localStorage.setItem("searchInput", query);
@@ -104,7 +104,7 @@ function Movies({
           handleToggleShortMovies={handleToggleShortMovies}
           shortMoviesOnly={shortMoviesOnly}
         />
-        <MoviesCardList filteredMovies={filteredMovies} isInfoTooltip={isInfoTooltip} />
+        <MoviesCardList filteredMovies={filteredMovies} isInfoTooltip={isInfoTooltip} onSaveMovie={saveMovie} />
       </main>
       <Footer />
     </>

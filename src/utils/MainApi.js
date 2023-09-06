@@ -14,8 +14,23 @@ class MainApi {
         }
     }
 
-    getAllMovies() {
-        return fetch(`${this._baseURL}`, {
+    saveMovie(movieData) {
+        return fetch(`${this._baseURL}/movies`, {
+            method: 'POST',
+            headers: this._headers,
+            body: JSON.stringify(movieData),
+        }).then(this._handleResponseStatus)
+    }
+
+    deleteMovie(movieData) {
+        return fetch(`${this._baseURL}/movies`, {
+            method: 'DELETE',
+            headers: this._headers,
+        }).then(this._handleResponseStatus)
+    }
+
+    getSavedMovies() {
+        return fetch(`${this._baseURL}/movies`, {
             method: 'GET',
             headers: this._headers,
         }).then(this._handleResponseStatus)
