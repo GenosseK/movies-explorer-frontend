@@ -7,14 +7,20 @@ function MovieCard({ movie, onSaveMovie, onDeleteMovie, savedMovies }) {
 
   const handleLikeClick = () => {
     if (!isLiked) {
-      console.log("Movie not liked. Saving...", movie);
+      //console.log("Movie not liked. Saving...", movie);
       // Call the onSaveMovie function if the movie is not liked
       onSaveMovie(movie);
     } else {
-      console.log("Movie already liked. Deleting...", movie);
-      console.log("Deleting movie with _id:", movie.movieId);
+      //console.log("Movie already liked. Deleting...", movie);
+      //console.log("Deleting movie with _id:", movie.movieId);
       // Call the onDeleteMovie function if the movie is already liked
-      onDeleteMovie(movie.id); // Pass the movie ID to delete
+      console.log(savedMovies)
+      const savedMovie = savedMovies.find(
+        (savedMovie) => savedMovie.movieId === movie.movieId,
+      )
+      console.log(savedMovie)
+      onDeleteMovie(savedMovie); // Pass the movie ID to delete
+        
     }
     setIsLiked(!isLiked);
   };

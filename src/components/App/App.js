@@ -59,7 +59,8 @@ function App() {
       .saveMovie(movieData)
       .then((savedMovie) => {
         console.log("Фильм успешно сохранен:", savedMovie);
-        setSavedMovies(savedMovie);
+        setSavedMovies((prevSavedMovies) => [...prevSavedMovies, savedMovie]);
+        console.log(savedMovies)
       })
       .catch((error) => {
         // Обработка ошибки при сохранении фильма
@@ -74,22 +75,33 @@ function App() {
     return searchItem._id;
   };
 
-  function handleDeleteMovie(movieId) {
+  function handleDeleteMovie(movie) {
 
     mainApi
-      .deleteMovie(movieId)
+      .deleteMovie(movie._id)
       .then(() => {
         // Handle the success response if needed
-        console.log(`Movie with ID ${movieId} deleted successfully.`);
+        console.log(`Movie with ID ${movie._id} deleted successfully.`);
         setSavedMovies((state) =>
-          state.filter((m) => m.movieId !== movieId)
+          state.filter((m) => m._id !== movie._id)
         );
       })
       .catch((error) => {
         // Handle any errors here
-        console.error(`Error deleting movie with ID ${movieId}:`, error);
+        console.error(`Error deleting movie with ID ${movie}:`, error);
       });
   }
+
+  useEffect(() =>{
+    mainApi.getSavedMovies()
+    .then((savedMovies) => {
+      setSavedMovies(savedMovies)
+    })
+    .catch((error) => {
+      // Handle any errors here
+      console.error(`Error deleting movie with ID ${savedMovies}:`, error);
+    });
+  }, [setSavedMovies])
   
 
   function saveMovie(movieData) {
@@ -131,7 +143,7 @@ function App() {
         />
         <Route
           path="/saved-movies"
-          element={<SavedMovies loggedIn={loggedIn} headerColor="black" setIsInfoTooltip={setIsInfoTooltip} isInfoTooltip={isInfoTooltip} />}
+          element={<SavedMovies loggedIn={loggedIn} headerColor="black" setIsInfoTooltip={setIsInfoTooltip} isInfoTooltip={isInfoTooltip} savedMovies={savedMovies} onDeleteMovie={handleDeleteMovie} />}
         />
         <Route
           path="/profile"

@@ -6,14 +6,14 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SearchForm from '../SearchForm/SearchForm';
 import './SavedMovies.css';
 
-function SavedMovies({ loggedIn, headerColor, isInfoTooltip, setIsInfoTooltip, onSaveMovie  }) {
+function SavedMovies({ loggedIn, headerColor, isInfoTooltip, setIsInfoTooltip, onSaveMovie, savedMovies, onDeleteMovie  }) {
 
     return (
         <>
             <Header loggedIn={loggedIn} headerColor={headerColor} />
             <main>
                 <SearchForm />
-                <MoviesCardList isInfoTooltip={isInfoTooltip} isSavedMovies={true} onSaveMovie={onSaveMovie} />
+                <MoviesCardList isInfoTooltip={isInfoTooltip} isSavedMovies={true} onSaveMovie={onSaveMovie} savedMovies={savedMovies} onDeleteMovie={onDeleteMovie} />
             </main>
             <Footer />
         </>
