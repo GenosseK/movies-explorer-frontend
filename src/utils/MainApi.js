@@ -22,8 +22,8 @@ class MainApi {
         }).then(this._handleResponseStatus)
     }
 
-    deleteMovie(movieData) {
-        return fetch(`${this._baseURL}/movies`, {
+    deleteMovie(_id) {
+        return fetch(`${this._baseURL}/movies/${_id}`, {
             method: 'DELETE',
             headers: this._headers,
         }).then(this._handleResponseStatus)
@@ -42,6 +42,7 @@ const mainApi = new MainApi({
     baseURL: BASE_URL,
     headers: {
         'Content-Type': 'application/json',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGY4NzRhYzM4MGFiMjk0NDc3MTExY2IiLCJpYXQiOjE2OTQwMDQ0MDcsImV4cCI6MTY5NDYwOTIwN30.kcU4wV8z3GhrpUJj49oE0iVH4IC2s9qp2woRk0wOOmI',
     }
 });
 

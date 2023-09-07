@@ -1,14 +1,22 @@
 import React from "react";
+import mainApi from "../../utils/MainApi";
 import "./MovieCard.css";
 
-function MovieCard({ movie, onSaveMovie }) {
+function MovieCard({ movie, onSaveMovie, onDeleteMovie }) {
   const [isLiked, setIsLiked] = React.useState(false);
+  const [savedMovies, setSavedMovies] = React.useState(null);
+
 
   const handleLikeClick = () => {
     if (!isLiked) {
       console.log("Movie not liked. Saving...", movie);
-      // Call the saveMovie function if the movie is not liked
+      // Call the onSaveMovie function if the movie is not liked
       onSaveMovie(movie);
+    } else {
+      console.log("Movie already liked. Deleting...", movie);
+      console.log("Deleting movie with _id:", movie._id);
+      // Call the onDeleteMovie function if the movie is already liked
+      onDeleteMovie(movie._id); // Pass the movie ID to delete
     }
     setIsLiked(!isLiked);
   };

@@ -4,7 +4,7 @@ import { cards } from '../../utils/constants';
 import './MoviesCardList.css';
 import Preloader from '../Preloader/Preloader';
 
-function MoviesCardList({ filteredMovies, isInfoTooltip, isSavedMovies, onSaveMovie }) {
+function MoviesCardList({ filteredMovies, isInfoTooltip, isSavedMovies, onSaveMovie, onDeleteMovie }) {
 
     const [isLoading, setLoading] = React.useState(false);
 
@@ -22,7 +22,7 @@ function MoviesCardList({ filteredMovies, isInfoTooltip, isSavedMovies, onSaveMo
             {(isSavedMovies || (filteredMovies.length > 0)) && (
                 <ul className="cards__grid">
                     {filteredMovies.map((movie) => (
-                        <MovieCard movie={movie} key={movie.id} onSaveMovie={onSaveMovie} />
+                        <MovieCard movie={movie} key={movie.id} onSaveMovie={onSaveMovie} onDeleteMovie={onDeleteMovie} />
                     ))}
                 </ul>
             )}

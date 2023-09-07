@@ -19,6 +19,8 @@ function App() {
 
   const [movieList, setMovieList] = useState({});
 
+  const [savedMovies, setSavedMovies] = useState(null);
+
   function loadMovies() {
     moviesApi
       .getAllMovies()
@@ -35,6 +37,51 @@ function App() {
   useEffect(() => {
     loadMovies();
   }, []);
+
+  function handleSaveMovie(movie) {
+    const movieData = {
+      movieId: movie.id,
+      country: movie.country,
+      director: movie.director,
+      duration: movie.duration,
+      year: movie.year,
+      description: movie.description,
+      image: 'https://api.nomoreparties.co' + movie.image.url,
+      thumbnail: 'https://api.nomoreparties.co' + movie.image.url,
+      trailerLink: movie.trailerLink,
+      nameRU: movie.nameRU,
+      nameEN: movie.nameEN,
+    };
+
+    console.log(movieData)
+  
+    mainApi
+      .saveMovie(movieData)
+      .then((savedMovie) => {
+        console.log("Фильм успешно сохранен:", savedMovie);
+        setSavedMovies(savedMovie);
+      })
+      .catch((error) => {
+        // Обработка ошибки при сохранении фильма
+        console.error("Ошибка при сохранении фильма:", error);
+        // Можете отобразить сообщение об ошибке или выполнить другие действия
+      });
+  };
+
+  function handleDeleteMovie(movieId) {
+    mainApi
+      .deleteMovie(movieId)
+      .then(() => {
+        // Handle the success response if needed
+        console.log(`Movie with ID ${movieId} deleted successfully.`);
+        // You can update the state or perform other actions here
+      })
+      .catch((error) => {
+        // Handle any errors here
+        console.error(`Error deleting movie with ID ${movieId}:`, error);
+      });
+  }
+  
 
   function saveMovie(movieData) {
     mainApi
@@ -65,7 +112,8 @@ function App() {
               setIsInfoTooltip={setIsInfoTooltip}
               isInfoTooltip={isInfoTooltip}
               movies={movieList}
-              onSaveMovie={saveMovie}
+              onSaveMovie={handleSaveMovie}
+              onDeleteMovie={handleDeleteMovie}
               headerColor="black"
             />
           }
