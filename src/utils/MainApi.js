@@ -22,8 +22,8 @@ class MainApi {
         }).then(this._handleResponseStatus)
     }
 
-    deleteMovie(_id) {
-        return fetch(`${this._baseURL}/movies/${_id}`, {
+    deleteMovie(movieId) {
+        return fetch(`${this._baseURL}/movies/${movieId}`, {
             method: 'DELETE',
             headers: this._headers,
         }).then(this._handleResponseStatus)

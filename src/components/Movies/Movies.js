@@ -14,6 +14,8 @@ function Movies({
   setIsInfoTooltip,
   onSaveMovie,
   onDeleteMovie,
+  savedMovies,
+  setSavedMovies,
 }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -24,7 +26,9 @@ function Movies({
   const loadFromLocalStorage = () => {
     const savedSearchInput = localStorage.getItem("searchInput");
     const savedShortMoviesOnly = localStorage.getItem("shortMoviesOnly");
-    const savedFilteredMovies = JSON.parse(localStorage.getItem("filteredMovies"));
+    const savedFilteredMovies = JSON.parse(
+      localStorage.getItem("filteredMovies")
+    );
     const savedIsInfoTooltip = localStorage.getItem("isInfoTooltip");
 
     if (savedSearchInput) {
@@ -42,7 +46,6 @@ function Movies({
     if (savedIsInfoTooltip) {
       setIsInfoTooltip(savedIsInfoTooltip);
     }
-
   };
 
   useEffect(() => {
@@ -74,7 +77,7 @@ function Movies({
 
     // Check if there are no search results and set isInfoTooltip to true
     if (filteredBySearch.length === 0) {
-      setIsInfoTooltip('Ничего не найдено');
+      setIsInfoTooltip("Ничего не найдено");
     }
 
     localStorage.setItem("searchInput", query);
@@ -105,7 +108,13 @@ function Movies({
           handleToggleShortMovies={handleToggleShortMovies}
           shortMoviesOnly={shortMoviesOnly}
         />
-        <MoviesCardList filteredMovies={filteredMovies} isInfoTooltip={isInfoTooltip} onSaveMovie={onSaveMovie} onDeleteMovie={onDeleteMovie} />
+        <MoviesCardList
+          filteredMovies={filteredMovies}
+          isInfoTooltip={isInfoTooltip}
+          onSaveMovie={onSaveMovie}
+          onDeleteMovie={onDeleteMovie}
+          savedMovies={savedMovies}
+        />
       </main>
       <Footer />
     </>

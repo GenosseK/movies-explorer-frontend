@@ -19,7 +19,7 @@ function App() {
 
   const [movieList, setMovieList] = useState({});
 
-  const [savedMovies, setSavedMovies] = useState(null);
+  const [savedMovies, setSavedMovies] = useState([]);
 
   function loadMovies() {
     moviesApi
@@ -68,13 +68,22 @@ function App() {
       });
   };
 
+  const getOneIdByAnother = (_id, array) => {
+    console.log(array)
+    const searchItem = array.find((movie) => movie.movieId === _id);
+    return searchItem._id;
+  };
+
   function handleDeleteMovie(movieId) {
+
     mainApi
       .deleteMovie(movieId)
       .then(() => {
         // Handle the success response if needed
         console.log(`Movie with ID ${movieId} deleted successfully.`);
-        // You can update the state or perform other actions here
+        setSavedMovies((state) =>
+          state.filter((m) => m.movieId !== movieId)
+        );
       })
       .catch((error) => {
         // Handle any errors here
@@ -114,6 +123,8 @@ function App() {
               movies={movieList}
               onSaveMovie={handleSaveMovie}
               onDeleteMovie={handleDeleteMovie}
+              savedMovies={savedMovies}
+              setSavedMovies={setSavedMovies}
               headerColor="black"
             />
           }
