@@ -1,33 +1,41 @@
-import React from "react";
+import React, { useEffect } from "react";
 import mainApi from "../../utils/MainApi";
 import "./MovieCard.css";
 
-function MovieCard({ movie, onSaveMovie, onDeleteMovie, savedMovies }) {
+function MovieCard({
+  movie,
+  onSaveMovie,
+  onDeleteMovie,
+  savedMovies,
+  setSavedMovies,
+}) {
   const [isLiked, setIsLiked] = React.useState(false);
-
-  const handleLikeClick = () => {
-    if (!isLiked) {
-      //console.log("Movie not liked. Saving...", movie);
-      // Call the onSaveMovie function if the movie is not liked
-      onSaveMovie(movie);
-    } else {
-      //console.log("Movie already liked. Deleting...", movie);
-      //console.log("Deleting movie with _id:", movie.movieId);
-      // Call the onDeleteMovie function if the movie is already liked
-      console.log(savedMovies)
-      const savedMovie = savedMovies.find(
-        (savedMovie) => savedMovie.movieId === movie.movieId,
-      )
-      console.log(savedMovie)
-      onDeleteMovie(savedMovie); // Pass the movie ID to delete
-        
-    }
-    setIsLiked(!isLiked);
-  };
-
   const likeButtonClassName = `card__like-button ${
     isLiked ? "card__like-button_active" : ""
   }`;
+
+  useEffect(() => {
+    // окрашиваем кнопку лайка, если фильм нашелся в сохраненных
+    if (savedMovies.some((savedMovie) => savedMovie.movieId === movie.id)) {
+      setIsLiked(true);
+    }
+  }, [savedMovies, movie.id]);
+
+  const savedMovieCheck = () => {
+    return savedMovies.find((savedMovie) => savedMovie.movieId === movie.id);
+  };
+
+  const handleLikeClick = () => {
+    onSaveMovie(movie);
+    setIsLiked(true);
+  };
+
+  const handleDislikeClick = () => {
+    const savedMovie = savedMovieCheck();
+    onDeleteMovie(savedMovie);
+    setIsLiked(false);
+  };
+
 
   const openTrailer = () => {
     if (movie.trailerLink) {
@@ -54,7 +62,7 @@ function MovieCard({ movie, onSaveMovie, onDeleteMovie, savedMovies }) {
           className={likeButtonClassName}
           aria-label="Сохранить"
           type="button"
-          onClick={handleLikeClick}
+          onClick={isLiked ? handleDislikeClick : handleLikeClick}
         ></button>
       </div>
     </li>

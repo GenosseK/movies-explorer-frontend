@@ -114,6 +114,7 @@ function Movies({
           onSaveMovie={onSaveMovie}
           onDeleteMovie={onDeleteMovie}
           savedMovies={savedMovies}
+          setSavedMovies={setSavedMovies}
         />
       </main>
       <Footer />
