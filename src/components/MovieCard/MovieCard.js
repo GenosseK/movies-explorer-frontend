@@ -16,13 +16,13 @@ function MovieCard({
 
   useEffect(() => {
     // окрашиваем кнопку лайка, если фильм нашелся в сохраненных
-    if (savedMovies.some((savedMovie) => savedMovie.movieId === movie.id)) {
+    if (savedMovies.some((savedMovie) => savedMovie.movieId === movie.id || movie.movieId)) {
       setIsLiked(true);
     }
   }, [savedMovies, movie.id]);
 
   const savedMovieCheck = () => {
-    return savedMovies.find((savedMovie) => savedMovie.movieId === movie.id);
+    return savedMovies.find((savedMovie) => savedMovie.movieId === movie.id || movie.movieId);
   };
 
   const handleLikeClick = () => {
@@ -47,7 +47,7 @@ function MovieCard({
     <li className="card">
       <img
         className="card__image"
-        src={`https://api.nomoreparties.co/${movie.image.url}`}
+        src={movie.image.url ? `https://api.nomoreparties.co/${movie.image.url}` : movie.image}
         alt={movie.nameRU}
         onClick={openTrailer}
       ></img>

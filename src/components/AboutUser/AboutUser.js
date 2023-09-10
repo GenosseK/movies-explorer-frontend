@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
 import './AboutUser.css';
 
-function AboutUser() {
+function AboutUser({ onSignOut }) {
+    
     return (
         <section className='profile'>
             <form className='profile__form'>
@@ -16,8 +16,8 @@ function AboutUser() {
                         <input className='profile__input profile__input_type_email' defaultValue='akazhanov72@yandex.ru' required />
                     </div>
                 </div>
-                <Link to='/profile' className='profile__button'>Редактировать</Link>
-                <Link to='/' className='profile__link'>Выйти из аккаунта</Link>
+                <button to='/profile' className='profile__button'>Редактировать</button>
+                <button className='profile__link' onClick={onSignOut}>Выйти из аккаунта</button>
             </form>
         </section>
     )

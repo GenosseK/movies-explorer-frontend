@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import MovieCard from "../MovieCard/MovieCard";
 import { cards } from "../../utils/constants";
 import "./MoviesCardList.css";
@@ -11,9 +11,9 @@ function MoviesCardList({
   onSaveMovie,
   onDeleteMovie,
   savedMovies,
-  setSavedMovies
+  setSavedMovies,
 }) {
-  const [isLoading, setLoading] = React.useState(false);
+  const [isLoading, setLoading] = useState(false);
 
   const handlePreloader = () => {
     setLoading(true);
@@ -21,17 +21,17 @@ function MoviesCardList({
 
   return (
     <section className="cards">
-      {!isSavedMovies && filteredMovies.length === 0 && (
+      {filteredMovies.length === 0 && (
         <div className="cards__info-tooltip">
           <p className="cards__info-tooltip_text">{isInfoTooltip}</p>
         </div>
       )}
-      {!isSavedMovies && filteredMovies.length > 0 && (
+      {filteredMovies.length > 0 && (
         <ul className="cards__grid">
           {filteredMovies.map((movie) => (
             <MovieCard
               movie={movie}
-              key={movie.id}
+              key={movie.id ?? movie.movieId}
               onSaveMovie={onSaveMovie}
               onDeleteMovie={onDeleteMovie}
               savedMovies={savedMovies}
@@ -40,7 +40,7 @@ function MoviesCardList({
           ))}
         </ul>
       )}
-      {!isSavedMovies && filteredMovies.length > 0 && // Conditionally render if there are found movies
+      {filteredMovies.length > 0 && // Conditionally render if there are found movies
         (isLoading ? (
           <Preloader />
         ) : (
@@ -54,43 +54,7 @@ function MoviesCardList({
             </button>
           </div>
         ))}
-
-
-      {isSavedMovies && savedMovies.length === 0 && (
-        <div className="cards__info-tooltip">
-          <p className="cards__info-tooltip_text">{isInfoTooltip}</p>
-        </div>
-      )}
-      {isSavedMovies && savedMovies.length > 0 && (
-        <ul className="cards__grid">
-          {savedMovies.map((movie) => (
-            <MovieCard
-              movie={movie}
-              key={movie.id}
-              onSaveMovie={onSaveMovie}
-              onDeleteMovie={onDeleteMovie}
-              savedMovies={savedMovies}
-              setSavedMovies={setSavedMovies}
-            />
-          ))}
-        </ul>
-      )}
-
-      {isSavedMovies && savedMovies.length > 0 && // Conditionally render if there are found movies
-        (isLoading ? (
-          <Preloader />
-        ) : (
-          <div className="cards__button-container">
-            <button
-              className="cards__loader-button"
-              type="button"
-              onClick={handlePreloader}
-            >
-              Ещё
-            </button>
-          </div>
-        ))}
-
+        
     </section>
   );
 }

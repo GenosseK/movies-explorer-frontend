@@ -68,10 +68,10 @@ function Navigation({ headerColor }) {
             ) : (
                 <div className="header__navigation">
                     <div className="header__links-left">
-                        <Link to="/movies" className="header__link">
+                        <Link to="/movies" className={`header__link ${location.pathname === '/movies' ? 'active' : ''}`}>
                             Фильмы
                         </Link>
-                        <Link to="/saved-movies" className="header__link">
+                        <Link to="/saved-movies" className={`header__link ${location.pathname === '/saved-movies' ? 'active' : ''}`}>
                             Сохранённые фильмы
                         </Link>
                     </div>

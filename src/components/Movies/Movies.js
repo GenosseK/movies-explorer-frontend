@@ -22,6 +22,7 @@ function Movies({
   const [searchInput, setSearchInput] = useState("");
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [shortMoviesOnly, setShortMoviesOnly] = useState(false);
+  const [isLoadingMovies, setIsLoadingMovies] = useState(true);
 
   const loadFromLocalStorage = () => {
     const savedSearchInput = localStorage.getItem("searchInput");
@@ -49,9 +50,11 @@ function Movies({
   };
 
   useEffect(() => {
-    // Load data from local storage when the component mounts
-    loadFromLocalStorage();
-  }, []);
+    if (isLoadingMovies) {
+      loadFromLocalStorage();
+      setIsLoadingMovies(false);
+    }
+  }, [isLoadingMovies]);
 
   const movieSearch = (query) => {
     const lowercaseSearch = query.toLowerCase();
@@ -92,7 +95,7 @@ function Movies({
   };
 
   useEffect(() => {
-    if (movies.length > 0) {
+    if (!isLoadingMovies) {
       movieSearch(searchInput);
     }
   }, [shortMoviesOnly]);
