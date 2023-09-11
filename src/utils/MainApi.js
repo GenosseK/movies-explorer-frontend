@@ -45,6 +45,20 @@ class MainApi {
         }).then(this._handleResponseStatus)
     }
 
+    changeUserInfo(name, email) {
+        return fetch(`${this._baseURL}/users/me`, {
+            method: 'PATCH',
+            headers:{
+                ...this._headers,
+                Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+            },
+            body: JSON.stringify({
+                name,
+                email,
+            })
+        }).then(this._handleResponseStatus)
+    }
+
 }
 
 const mainApi = new MainApi({

@@ -11,6 +11,8 @@ import {
 
 function Register({ onRegister }) {
 
+    const [isFormValid, setIsFormValid] = useState(false);
+
     const [errors, setErrors] = useState({
         name: '',
         email: '',
@@ -34,6 +36,11 @@ function Register({ onRegister }) {
       
         // Update the errors state
         setErrors({ ...errors, [name]: error });
+
+        const inputs = document.querySelectorAll('.form__input');
+        const isAnyInputInvalid = Array.from(inputs).some((input) => !input.validity.valid);
+        setIsFormValid(!isAnyInputInvalid);
+
     };
 
     const handleSubmit = (e) => {
@@ -98,14 +105,13 @@ function Register({ onRegister }) {
                             type="password"
                             name="password"
                             placeholder="••••••••••••••"
-                            minLength="2"
-                            maxLength="30"
+                            
                             required
                             onInput={handleInputChange}
                         />
                         <span className="form__error">{errors.password}</span>
                     </label>
-                    <button className='form__button' type='submit' >Зарегистрироваться</button>
+                    <button className={`form__button ${!isFormValid && 'form__button_disabled'}`} type='submit' disabled={!isFormValid}>Зарегистрироваться</button>
 
                 </form>
                 <p className='form__text'>

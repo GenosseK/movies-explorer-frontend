@@ -168,7 +168,7 @@ function App() {
         )
       );
   }, [setSavedMovies]);
-
+/*
   function saveMovie(movieData) {
     mainApi
       .saveMovie(movieData)
@@ -181,6 +181,17 @@ function App() {
         // Handle any errors here
         console.error("Error saving movie:", error);
       });
+  }*/
+
+  function handleUpdateUserInfo ({ name, email }) {
+    mainApi.changeUserInfo(name, email)
+    .then((res) => {
+      setCurrentUser({
+        name: res.name,
+        email: res.email,
+      });
+    })
+    .catch((error) => console.log(`Ошибка: ${error}`));
   }
 
   return (
@@ -222,7 +233,7 @@ function App() {
           />
           <Route
             path="/profile"
-            element={<Profile loggedIn={loggedIn} headerColor="black" onSignOut={signOut} />}
+            element={<Profile loggedIn={loggedIn} headerColor="black" onSignOut={signOut} currentUser={currentUser} onUpdateUser={handleUpdateUserInfo} />}
           />
           <Route
             path="/signup"

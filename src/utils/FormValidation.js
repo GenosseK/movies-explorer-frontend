@@ -14,8 +14,8 @@ export const validateName = (name) => {
   };
   
   export const validatePassword = (password) => {
-    if (password.length < 6 || !/[A-Z]/.test(password) || !/\d/.test(password)) {
-      return 'Пароль должен быть не короче 6 символов и содержать хотя бы одну заглавную букву и одну цифру';
+    if (password.length < 6) {
+      return 'Пароль должен быть не короче 6 символов';
     }
     return '';
   };
