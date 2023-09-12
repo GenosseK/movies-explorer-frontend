@@ -13,6 +13,8 @@ import * as auth from "../../utils/Auth";
 import moviesApi from "../../utils/MoviesApi";
 import mainApi from "../../utils/MainApi";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import ProtectedRouteElement from '../../utils/ProtectedRoute';
+import PagePreloader from "../PagePreloader/PagePreloader";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -23,6 +25,8 @@ function App() {
   const [movieList, setMovieList] = useState([]);
 
   const [savedMovies, setSavedMovies] = useState([]);
+
+  const [isLoadingToken, setIsLoadingToken] = useState(true);
 
   const navigate = useNavigate();
 
@@ -37,10 +41,16 @@ function App() {
           setLoggedIn(true);
           setCurrentUser({ _id, name, email });
         })
-        .catch((error) => console.log(`Ошибка: ${error}`));
+        .catch((error) => {
+          console.log(`Ошибка: ${error}`);
+        })
+        .finally(() => {
+          setIsLoadingToken(false);
+        });
     } else {
       navigate('/');
       setLoggedIn(false);
+      setIsLoadingToken(false);
     }
   }
 
@@ -168,35 +178,38 @@ function App() {
         )
       );
   }, [setSavedMovies]);
-/*
-  function saveMovie(movieData) {
-    mainApi
-      .saveMovie(movieData)
-      .then((savedMovie) => {
-        // Handle the success response if needed
-        console.log("Movie saved:", savedMovie);
-        // You can update the state or perform other actions here
-      })
-      .catch((error) => {
-        // Handle any errors here
-        console.error("Error saving movie:", error);
-      });
-  }*/
+  /*
+    function saveMovie(movieData) {
+      mainApi
+        .saveMovie(movieData)
+        .then((savedMovie) => {
+          // Handle the success response if needed
+          console.log("Movie saved:", savedMovie);
+          // You can update the state or perform other actions here
+        })
+        .catch((error) => {
+          // Handle any errors here
+          console.error("Error saving movie:", error);
+        });
+    }*/
 
-  function handleUpdateUserInfo ({ name, email }) {
+  function handleUpdateUserInfo({ name, email }) {
     mainApi.changeUserInfo(name, email)
-    .then((res) => {
-      setCurrentUser({
-        name: res.name,
-        email: res.email,
-      });
-    })
-    .catch((error) => console.log(`Ошибка: ${error}`));
+      .then((res) => {
+        setCurrentUser({
+          name: res.name,
+          email: res.email,
+        });
+      })
+      .catch((error) => console.log(`Ошибка: ${error}`));
   }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
+        {isLoadingToken? (
+          <PagePreloader />
+        ): (
         <Routes>
           <Route
             path="/"
@@ -204,7 +217,7 @@ function App() {
           />
           <Route
             path="/movies"
-            element={
+            element={<ProtectedRouteElement loggedIn={loggedIn}>
               <Movies
                 loggedIn={loggedIn}
                 setIsInfoTooltip={setIsInfoTooltip}
@@ -216,11 +229,12 @@ function App() {
                 setSavedMovies={setSavedMovies}
                 headerColor="black"
               />
+            </ProtectedRouteElement>
             }
           />
           <Route
             path="/saved-movies"
-            element={
+            element={<ProtectedRouteElement loggedIn={loggedIn}>
               <SavedMovies
                 loggedIn={loggedIn}
                 headerColor="black"
@@ -229,11 +243,13 @@ function App() {
                 savedMovies={savedMovies}
                 onDeleteMovie={handleDeleteMovie}
               />
+            </ProtectedRouteElement>
             }
           />
           <Route
             path="/profile"
-            element={<Profile loggedIn={loggedIn} headerColor="black" onSignOut={signOut} currentUser={currentUser} onUpdateUser={handleUpdateUserInfo} />}
+            element={<ProtectedRouteElement loggedIn={loggedIn}>
+              <Profile loggedIn={loggedIn} headerColor="black" onSignOut={signOut} currentUser={currentUser} onUpdateUser={handleUpdateUserInfo} /></ProtectedRouteElement>}
           />
           <Route
             path="/signup"
@@ -242,6 +258,7 @@ function App() {
           <Route path="/signin" element={<Login onLogginIn={handleLogin} />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
+        )}
       </div>
     </CurrentUserContext.Provider>
   );

@@ -13,11 +13,22 @@ function MoviesCardList({
   savedMovies,
   setSavedMovies,
 }) {
+  
+
   const [isLoading, setLoading] = useState(false);
+  const [displayCount, setDisplayCount] = useState(10); // Number of cards to initially display
+  const cardsPerPage = 3; // Number of cards to load at each "Ещё" button click
 
   const handlePreloader = () => {
     setLoading(true);
+    // Simulate loading for demonstration purposes
+    setTimeout(() => {
+      setLoading(false);
+      setDisplayCount(displayCount + cardsPerPage); // Load more cards
+    }, 1000); // Replace this with your actual data fetching logic
   };
+
+  
 
   return (
     <section className="cards">
@@ -28,7 +39,7 @@ function MoviesCardList({
       )}
       {filteredMovies.length > 0 && (
         <ul className="cards__grid">
-          {filteredMovies.map((movie) => (
+          {filteredMovies.slice(0, displayCount).map((movie) => (
             <MovieCard
               movie={movie}
               key={movie.id ?? movie.movieId}
@@ -40,7 +51,7 @@ function MoviesCardList({
           ))}
         </ul>
       )}
-      {filteredMovies.length > 0 && // Conditionally render if there are found movies
+      {filteredMovies.length > displayCount  && // Conditionally render if there are found movies
         (isLoading ? (
           <Preloader />
         ) : (
