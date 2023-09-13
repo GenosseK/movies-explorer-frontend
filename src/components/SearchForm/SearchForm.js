@@ -21,7 +21,7 @@ function SearchForm({ movieSearch, searchInput, setSearchInput, handleToggleShor
             </div>
             <div className="search__toggle">
                 <label className="search__tumbler">
-                    <input type="checkbox" className="search__checkbox" checked={shortMoviesOnly} // Bind to the state variable
+                    <input type="checkbox" className="search__checkbox" checked={shortMoviesOnly}
                         onChange={handleToggleShortMovies} />
                     <span className="search__slider" />
                 </label>

@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import mainApi from "../../utils/MainApi";
 import "./MovieCard.css";
 
 function MovieCard({

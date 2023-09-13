@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import MovieCard from "../MovieCard/MovieCard";
-import { cards } from "../../utils/constants";
 import "./MoviesCardList.css";
 import Preloader from "../Preloader/Preloader";
 
@@ -14,7 +13,6 @@ function MoviesCardList({
   setSavedMovies,
 }) {
   
-
   const [isLoading, setLoading] = useState(false);
   const [displayCount, setDisplayCount] = useState(10); // Number of cards to initially display
   const cardsPerPage = 3; // Number of cards to load at each "Ещё" button click
@@ -25,10 +23,8 @@ function MoviesCardList({
     setTimeout(() => {
       setLoading(false);
       setDisplayCount(displayCount + cardsPerPage); // Load more cards
-    }, 1000); // Replace this with your actual data fetching logic
+    }, 1000);
   };
-
-  
 
   return (
     <section className="cards">
@@ -51,7 +47,7 @@ function MoviesCardList({
           ))}
         </ul>
       )}
-      {filteredMovies.length > displayCount  && // Conditionally render if there are found movies
+      {filteredMovies.length > displayCount &&
         (isLoading ? (
           <Preloader />
         ) : (
@@ -65,7 +61,6 @@ function MoviesCardList({
             </button>
           </div>
         ))}
-        
     </section>
   );
 }

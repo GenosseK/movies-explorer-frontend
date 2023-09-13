@@ -19,5 +19,3 @@ export const validateName = (name) => {
     }
     return '';
   };
-  
-  

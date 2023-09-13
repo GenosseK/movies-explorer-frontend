@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import mainApi from "../../utils/MainApi";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
@@ -20,7 +19,6 @@ function SavedMovies({
   const [shortMoviesOnly, setShortMoviesOnly] = useState(
     localStorage.getItem("shortSavedMoviesOnly") === "true"
   );
-  
 
   const movieSearch = (query) => {
     const lowercaseSearch = query.toLowerCase();
@@ -32,16 +30,15 @@ function SavedMovies({
 
     // Apply the filter based on the 'shortMoviesOnly' state first
     const filteredBySearch = savedMovies.filter((movie) => {
-        const nameRU = movie.nameRU.toLowerCase();
-        const nameEN = movie.nameEN.toLowerCase();
-        return (
-          nameRU.includes(lowercaseSearch) || nameEN.includes(lowercaseSearch)
-        );
-      });
+      const nameRU = movie.nameRU.toLowerCase();
+      const nameEN = movie.nameEN.toLowerCase();
+      return (
+        nameRU.includes(lowercaseSearch) || nameEN.includes(lowercaseSearch)
+      );
+    });
 
     setFilteredMovies(filteredBySearch);
 
-    // Check if there are no search results and set isInfoTooltip to true
     if (filteredBySearch.length === 0) {
       setIsInfoTooltip("Ничего не найдено");
     }
@@ -52,7 +49,6 @@ function SavedMovies({
     setShortMoviesOnly(updatedValue);
     localStorage.setItem("shortSavedMoviesOnly", updatedValue.toString());
   };
-  
 
   useEffect(() => {
     if (savedMovies.length > 0) {
@@ -74,7 +70,7 @@ function SavedMovies({
       setFilteredMovies(filteredBySearch);
     }
   }, [shortMoviesOnly, searchInput, savedMovies]);
-  
+
   return (
     <>
       <Header loggedIn={loggedIn} headerColor={headerColor} />

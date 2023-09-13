@@ -3,7 +3,6 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 import Footer from "../Footer/Footer";
 import "./Movies.css";
-import moviesApi from "../../utils/MoviesApi";
 import { useEffect, useState } from "react";
 
 function Movies({
@@ -17,8 +16,7 @@ function Movies({
   savedMovies,
   setSavedMovies,
 }) {
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
+  
   const [searchInput, setSearchInput] = useState("");
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [shortMoviesOnly, setShortMoviesOnly] = useState(false);
@@ -78,7 +76,6 @@ function Movies({
 
     setFilteredMovies(filteredBySearch);
 
-    // Check if there are no search results and set isInfoTooltip to true
     if (filteredBySearch.length === 0) {
       setIsInfoTooltip("Ничего не найдено");
     }
@@ -90,7 +87,6 @@ function Movies({
   };
 
   const handleToggleShortMovies = () => {
-    // Toggle the 'shortMoviesOnly' state when the checkbox is clicked
     setShortMoviesOnly(!shortMoviesOnly);
   };
 

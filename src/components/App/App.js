@@ -13,7 +13,7 @@ import * as auth from "../../utils/Auth";
 import moviesApi from "../../utils/MoviesApi";
 import mainApi from "../../utils/MainApi";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import ProtectedRouteElement from '../../utils/ProtectedRoute';
+import ProtectedRouteElement from "../../utils/ProtectedRoute";
 import PagePreloader from "../PagePreloader/PagePreloader";
 
 function App() {
@@ -48,7 +48,7 @@ function App() {
           setIsLoadingToken(false);
         });
     } else {
-      navigate('/');
+      navigate("/");
       setLoggedIn(false);
       setIsLoadingToken(false);
     }
@@ -63,7 +63,6 @@ function App() {
       .register(name, email, password)
       .then(() => {
         handleLogin({ email, password });
-        console.log('User registrated')
       })
       .catch((error) => console.log(`Ошибка: ${error}`));
   };
@@ -75,7 +74,6 @@ function App() {
         if (res.token) {
           localStorage.setItem("jwt", res.token);
           checkToken();
-          console.log('Logged in ! ! !')
         }
         setLoggedIn(true);
         navigate("/movies");
@@ -130,38 +128,23 @@ function App() {
       nameEN: movie.nameEN,
     };
 
-    console.log(movieData);
-
     mainApi
       .saveMovie(movieData)
       .then((savedMovie) => {
-        console.log("Фильм успешно сохранен:", savedMovie);
         setSavedMovies((prevSavedMovies) => [...prevSavedMovies, savedMovie]);
-        console.log(savedMovies);
       })
       .catch((error) => {
-        // Обработка ошибки при сохранении фильма
         console.error("Ошибка при сохранении фильма:", error);
-        // Можете отобразить сообщение об ошибке или выполнить другие действия
       });
   }
-
-  const getOneIdByAnother = (_id, array) => {
-    console.log(array);
-    const searchItem = array.find((movie) => movie.movieId === _id);
-    return searchItem._id;
-  };
 
   function handleDeleteMovie(movie) {
     mainApi
       .deleteMovie(movie._id)
       .then(() => {
-        // Handle the success response if needed
-        console.log(`Movie with ID ${movie._id} deleted successfully.`);
         setSavedMovies((state) => state.filter((m) => m._id !== movie._id));
       })
       .catch((error) => {
-        // Handle any errors here
         console.error(`Error deleting movie with ID ${movie}:`, error);
       });
   }
@@ -178,23 +161,10 @@ function App() {
         )
       );
   }, [setSavedMovies]);
-  /*
-    function saveMovie(movieData) {
-      mainApi
-        .saveMovie(movieData)
-        .then((savedMovie) => {
-          // Handle the success response if needed
-          console.log("Movie saved:", savedMovie);
-          // You can update the state or perform other actions here
-        })
-        .catch((error) => {
-          // Handle any errors here
-          console.error("Error saving movie:", error);
-        });
-    }*/
 
   function handleUpdateUserInfo({ name, email }) {
-    mainApi.changeUserInfo(name, email)
+    mainApi
+      .changeUserInfo(name, email)
       .then((res) => {
         setCurrentUser({
           name: res.name,
@@ -207,57 +177,71 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
-        {isLoadingToken? (
+        {isLoadingToken ? (
           <PagePreloader />
-        ): (
-        <Routes>
-          <Route
-            path="/"
-            element={<Main loggedIn={loggedIn} headerColor="blue" />}
-          />
-          <Route
-            path="/movies"
-            element={<ProtectedRouteElement loggedIn={loggedIn}>
-              <Movies
-                loggedIn={loggedIn}
-                setIsInfoTooltip={setIsInfoTooltip}
-                isInfoTooltip={isInfoTooltip}
-                movies={movieList}
-                onSaveMovie={handleSaveMovie}
-                onDeleteMovie={handleDeleteMovie}
-                savedMovies={savedMovies}
-                setSavedMovies={setSavedMovies}
-                headerColor="black"
-              />
-            </ProtectedRouteElement>
-            }
-          />
-          <Route
-            path="/saved-movies"
-            element={<ProtectedRouteElement loggedIn={loggedIn}>
-              <SavedMovies
-                loggedIn={loggedIn}
-                headerColor="black"
-                setIsInfoTooltip={setIsInfoTooltip}
-                isInfoTooltip={isInfoTooltip}
-                savedMovies={savedMovies}
-                onDeleteMovie={handleDeleteMovie}
-              />
-            </ProtectedRouteElement>
-            }
-          />
-          <Route
-            path="/profile"
-            element={<ProtectedRouteElement loggedIn={loggedIn}>
-              <Profile loggedIn={loggedIn} headerColor="black" onSignOut={signOut} currentUser={currentUser} onUpdateUser={handleUpdateUserInfo} /></ProtectedRouteElement>}
-          />
-          <Route
-            path="/signup"
-            element={<Register onRegister={handleRegiser} />}
-          />
-          <Route path="/signin" element={<Login onLogginIn={handleLogin} />} />
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
+        ) : (
+          <Routes>
+            <Route
+              path="/"
+              element={<Main loggedIn={loggedIn} headerColor="blue" />}
+            />
+            <Route
+              path="/movies"
+              element={
+                <ProtectedRouteElement loggedIn={loggedIn}>
+                  <Movies
+                    loggedIn={loggedIn}
+                    setIsInfoTooltip={setIsInfoTooltip}
+                    isInfoTooltip={isInfoTooltip}
+                    movies={movieList}
+                    onSaveMovie={handleSaveMovie}
+                    onDeleteMovie={handleDeleteMovie}
+                    savedMovies={savedMovies}
+                    setSavedMovies={setSavedMovies}
+                    headerColor="black"
+                  />
+                </ProtectedRouteElement>
+              }
+            />
+            <Route
+              path="/saved-movies"
+              element={
+                <ProtectedRouteElement loggedIn={loggedIn}>
+                  <SavedMovies
+                    loggedIn={loggedIn}
+                    headerColor="black"
+                    setIsInfoTooltip={setIsInfoTooltip}
+                    isInfoTooltip={isInfoTooltip}
+                    savedMovies={savedMovies}
+                    onDeleteMovie={handleDeleteMovie}
+                  />
+                </ProtectedRouteElement>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRouteElement loggedIn={loggedIn}>
+                  <Profile
+                    loggedIn={loggedIn}
+                    headerColor="black"
+                    onSignOut={signOut}
+                    currentUser={currentUser}
+                    onUpdateUser={handleUpdateUserInfo}
+                  />
+                </ProtectedRouteElement>
+              }
+            />
+            <Route
+              path="/signup"
+              element={<Register onRegister={handleRegiser} />}
+            />
+            <Route
+              path="/signin"
+              element={<Login onLogginIn={handleLogin} />}
+            />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
         )}
       </div>
     </CurrentUserContext.Provider>
