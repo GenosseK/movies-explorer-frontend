@@ -2,6 +2,8 @@
 
 Pull request - https://github.com/GenosseK/movies-explorer-frontend/pull/2
 
-Frontend - genossek.movie-explorer.nomoreparties.co
+IP - 158.160.70.65
 
-Backend - api.genoss.movie-explorer.nomoreparties.co
+Frontend - http://genossek.movie-explorer.nomoreparties.co/
+
+Backend - http://api.genoss.movie-explorer.nomoreparties.co/
