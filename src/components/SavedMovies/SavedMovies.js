@@ -13,12 +13,11 @@ function SavedMovies({
   onSaveMovie,
   savedMovies,
   onDeleteMovie,
+  setSavedMovies
 }) {
   const [searchInput, setSearchInput] = useState("");
   const [filteredMovies, setFilteredMovies] = useState(savedMovies);
-  const [shortMoviesOnly, setShortMoviesOnly] = useState(
-    localStorage.getItem("shortSavedMoviesOnly") === "true"
-  );
+  const [shortMoviesOnly, setShortMoviesOnly] = useState(false);
 
   const movieSearch = (query) => {
     const lowercaseSearch = query.toLowerCase();
@@ -47,7 +46,6 @@ function SavedMovies({
   const handleToggleShortMovies = () => {
     const updatedValue = !shortMoviesOnly;
     setShortMoviesOnly(updatedValue);
-    localStorage.setItem("shortSavedMoviesOnly", updatedValue.toString());
   };
 
   useEffect(() => {
@@ -89,6 +87,8 @@ function SavedMovies({
           savedMovies={savedMovies}
           onDeleteMovie={onDeleteMovie}
           filteredMovies={filteredMovies}
+          setSavedMovies={setSavedMovies}
+          setFilteredMovies={setFilteredMovies}
         />
       </main>
       <Footer />

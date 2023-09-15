@@ -1,4 +1,4 @@
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Main from "../Landing/Landing/Main";
 import Movies from "../Movies/Movies";
@@ -87,12 +87,12 @@ function App() {
     localStorage.removeItem("shortMoviesOnly");
     localStorage.removeItem("filteredMovies");
     localStorage.removeItem("isInfoTooltip");
-    localStorage.removeItem("shortSavedMoviesOnly");
     setLoggedIn(false);
     setCurrentUser({
       name: "",
       email: "",
     });
+    setSavedMovies([]);
     navigate("/", { replace: true });
   }
 
@@ -150,17 +150,19 @@ function App() {
   }
 
   useEffect(() => {
-    mainApi
-      .getSavedMovies()
-      .then((savedMovies) => {
-        setSavedMovies(savedMovies);
-      })
-      .catch(() =>
-        setIsInfoTooltip(
-          "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"
-        )
-      );
-  }, [setSavedMovies]);
+    if (loggedIn) {
+      mainApi
+        .getSavedMovies()
+        .then((savedMovies) => {
+          setSavedMovies(savedMovies);
+        })
+        .catch(() =>
+          setIsInfoTooltip(
+            "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"
+          )
+        );
+    }
+  }, [loggedIn, setSavedMovies]);
 
   function handleUpdateUserInfo({ name, email }) {
     mainApi
@@ -211,9 +213,11 @@ function App() {
                     loggedIn={loggedIn}
                     headerColor="black"
                     setIsInfoTooltip={setIsInfoTooltip}
+                    onSaveMovie={handleSaveMovie}
                     isInfoTooltip={isInfoTooltip}
                     savedMovies={savedMovies}
                     onDeleteMovie={handleDeleteMovie}
+                    setSavedMovies={setSavedMovies}
                   />
                 </ProtectedRouteElement>
               }
@@ -232,14 +236,17 @@ function App() {
                 </ProtectedRouteElement>
               }
             />
-            <Route
-              path="/signup"
-              element={<Register onRegister={handleRegiser} />}
-            />
-            <Route
-              path="/signin"
-              element={<Login onLogginIn={handleLogin} />}
-            />
+            {loggedIn ? (
+              <>
+                <Route path="/signup" element={<Navigate to="/" replace />} />
+                <Route path="/signin" element={<Navigate to="/" replace />} />
+              </>
+            ) : (
+              <>
+                <Route path="/signup" element={<Register onRegister={handleRegiser} />} />
+                <Route path="/signin" element={<Login onLogginIn={handleLogin} />} />
+              </>
+            )}
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         )}

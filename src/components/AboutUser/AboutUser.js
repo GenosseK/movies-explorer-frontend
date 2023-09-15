@@ -55,7 +55,12 @@ function AboutUser({ onSignOut, currentUser, onUpdateUser }) {
           email: userData.email || currentUser.email,
         };
 
-        onUpdateUser(updatedUserData);
+        if (
+          updatedUserData.name !== currentUser.name ||
+          updatedUserData.email !== currentUser.email
+        ) {
+          onUpdateUser(updatedUserData);
+        }
         setErrors({
           name: "",
           email: "",

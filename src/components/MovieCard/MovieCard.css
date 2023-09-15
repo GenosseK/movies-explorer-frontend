@@ -58,8 +58,28 @@
     margin-left: auto;
 }
 
+.card__like-delete {
+    background: transparent url(../../images/delete-button.svg) no-repeat center;
+    height: 30px;
+    width: 30px;
+    border: none;
+    cursor: pointer;
+    margin-left: auto;
+    padding: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
 .card__like-button:hover {
     opacity: 0.8;
+}
+
+.card__like-delete:hover {
+    opacity: 0.8;
+}
+
+.card:hover .card__like-delete {
+    opacity: 1; 
 }
 
 @media screen and (max-width: 800px) {

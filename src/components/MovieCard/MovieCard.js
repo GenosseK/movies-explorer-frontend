@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import "./MovieCard.css";
 
 function MovieCard({
@@ -7,11 +8,20 @@ function MovieCard({
   onDeleteMovie,
   savedMovies,
   setSavedMovies,
+  filteredMovies,
+  setFilteredMovies
 }) {
+
+  const location = useLocation();
+
   const [isLiked, setIsLiked] = React.useState(false);
-  const likeButtonClassName = `card__like-button ${
-    isLiked ? "card__like-button_active" : ""
-  }`;
+  let likeButtonClassName = "card__like-button";
+
+  if (location.pathname === "/movies") {
+    likeButtonClassName += isLiked ? " card__like-button_active" : "";
+  } else if (location.pathname === "/saved-movies") {
+    likeButtonClassName = "card__like-delete";
+  }
 
   useEffect(() => {
     // окрашиваем кнопку лайка, если фильм нашелся в сохраненных
@@ -25,14 +35,22 @@ function MovieCard({
   };
 
   const handleLikeClick = () => {
-    onSaveMovie(movie);
-    setIsLiked(true);
+    if (location.pathname === "/movies") {
+      onSaveMovie(movie);
+      setIsLiked(true);
+    }
   };
 
   const handleDislikeClick = () => {
     const savedMovie = savedMovieCheck();
     onDeleteMovie(savedMovie);
     setIsLiked(false);
+    if (location.pathname === "/saved-movies") {
+      const updatedFilteredMovies = filteredMovies.filter(
+        (filteredMovie) => filteredMovie.id !== movie.id
+      );
+      setFilteredMovies(updatedFilteredMovies);
+    }
   };
 
 
