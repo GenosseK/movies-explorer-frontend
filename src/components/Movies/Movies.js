@@ -62,12 +62,10 @@ function Movies({
       return;
     }
 
-    // Apply the filter based on the 'shortMoviesOnly' state first
     const filteredByDuration = shortMoviesOnly
       ? movies.filter((movie) => movie.duration < 40)
       : movies;
 
-    // Then apply the search query filter
     const filteredBySearch = filteredByDuration.filter(
       (movie) =>
         movie.nameRU.toLowerCase().includes(lowercaseSearch) ||

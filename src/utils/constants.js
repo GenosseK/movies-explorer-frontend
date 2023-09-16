@@ -5,4 +5,14 @@ export const BASE_URL =
 
 export const BEATFILM_URL = "https://api.nomoreparties.co/beatfilm-movies";
 
-// export const BASE_URL = 'http://localhost:3000';
+export const SMALL_WIDTH = 451;
+
+export const TABLET_WIDTH = 1066;
+
+export const LAPTOP_WIDTH = 1387;
+
+export const ULTRA_WIDTH = 1708;
+
+export const formatMovieDuration = (duration) => {
+  return `${Math.floor(duration / 60)}ч ${duration % 60}м`;
+};

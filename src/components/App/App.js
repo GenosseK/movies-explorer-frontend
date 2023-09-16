@@ -21,6 +21,9 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
 
   const [isInfoTooltip, setIsInfoTooltip] = useState("");
+  const [statusMessage, setStatusMessage] = useState("");
+  const [statusImage, setStatusImage] = useState(false);
+  const [statusPopupOpen, setStatusPopupOpen] = useState(false);
 
   const [movieList, setMovieList] = useState([]);
 
@@ -64,7 +67,18 @@ function App() {
       .then(() => {
         handleLogin({ email, password });
       })
-      .catch((error) => console.log(`Ошибка: ${error}`));
+      .catch((error) => {
+        if (error === "Error: 409") {
+          setStatusMessage("Пользователь с таким email уже существует.");
+          setStatusImage(false);
+          setStatusPopupOpen(true)
+        }
+        if (error === `Error: 500`) {
+          setStatusMessage("При регистрации пользователя произошла ошибка.");
+          setStatusImage(false);
+          setStatusPopupOpen(true)
+        }
+      });
   };
 
   const handleLogin = ({ email, password }) => {
@@ -78,7 +92,18 @@ function App() {
         setLoggedIn(true);
         navigate("/movies");
       })
-      .catch((error) => console.log(`Ошибка: ${error}`));
+      .catch((error) => {
+        if (error === `Error: 401`) {
+          setStatusMessage("Вы ввели неправильный логин или пароль.");
+          setStatusImage(false);
+          setStatusPopupOpen(true)
+        }
+        if (error === `Error: 500`) {
+          setStatusMessage("При авторизации произошла ошибка.");
+          setStatusImage(false);
+          setStatusPopupOpen(true)
+        }
+      });
   };
 
   function signOut() {
@@ -172,8 +197,20 @@ function App() {
           name: res.name,
           email: res.email,
         });
+        setStatusMessage("Данные успешно изменены!");
+        setStatusImage(true);
       })
-      .catch((error) => console.log(`Ошибка: ${error}`));
+      .catch((error) => {
+        if (error === "Ошибка: 409") {
+          setStatusMessage("Пользователь с таким email уже существует.");
+          setStatusImage(false);
+        }
+        if (error === `Ошибка: 500`) {
+          setStatusMessage("При обновлении профиля произошла ошибка.");
+          setStatusImage(false);
+        }
+      })
+      .finally(() => setStatusPopupOpen(true));
   }
 
   return (
@@ -232,6 +269,10 @@ function App() {
                     onSignOut={signOut}
                     currentUser={currentUser}
                     onUpdateUser={handleUpdateUserInfo}
+                    statusMessage={statusMessage}
+                    statusImage={statusImage}
+                    statusPopupOpen={statusPopupOpen}
+                    setStatusPopupOpen={setStatusPopupOpen}
                   />
                 </ProtectedRouteElement>
               }
@@ -243,8 +284,30 @@ function App() {
               </>
             ) : (
               <>
-                <Route path="/signup" element={<Register onRegister={handleRegiser} />} />
-                <Route path="/signin" element={<Login onLogginIn={handleLogin} />} />
+                <Route
+                  path="/signup"
+                  element={
+                    <Register
+                      onRegister={handleRegiser}
+                      statusMessage={statusMessage}
+                      statusImage={statusImage}
+                      statusPopupOpen={statusPopupOpen}
+                      setStatusPopupOpen={setStatusPopupOpen}
+                    />
+                  }
+                />
+                <Route
+                  path="/signin"
+                  element={
+                    <Login
+                      onLogginIn={handleLogin}
+                      statusMessage={statusMessage}
+                      statusImage={statusImage}
+                      statusPopupOpen={statusPopupOpen}
+                      setStatusPopupOpen={setStatusPopupOpen}
+                    />
+                  }
+                />
               </>
             )}
             <Route path="*" element={<PageNotFound />} />

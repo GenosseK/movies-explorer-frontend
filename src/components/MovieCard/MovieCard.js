@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "./MovieCard.css";
+import { formatMovieDuration } from "../../utils/constants";
 
 function MovieCard({
   movie,
@@ -72,7 +73,7 @@ function MovieCard({
         <div className="card__info">
           <h2 className="card__title">{movie.nameRU}</h2>
           <p className="card__length">
-            {Math.floor(movie.duration / 60)}ч {movie.duration % 60}м
+            {formatMovieDuration(movie.duration)}
           </p>
         </div>
         <button

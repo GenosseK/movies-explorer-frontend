@@ -8,8 +8,15 @@ import {
   validateEmail,
   validatePassword,
 } from "../../utils/FormValidation";
+import StatusPopup from "../StatusPopup/StatusPopup";
 
-function Register({ onRegister }) {
+function Register({
+  onRegister,
+  statusMessage,
+  statusImage,
+  statusPopupOpen,
+  setStatusPopupOpen,
+}) {
   const [isFormValid, setIsFormValid] = useState(false);
 
   const [errors, setErrors] = useState({
@@ -23,7 +30,6 @@ function Register({ onRegister }) {
     const name = input.name;
     const value = input.value;
 
-    // Call the appropriate validation function based on the input name
     let error = "";
     if (name === "name") {
       error = validateName(value);
@@ -33,7 +39,6 @@ function Register({ onRegister }) {
       error = validatePassword(value);
     }
 
-    // Update the errors state
     setErrors({ ...errors, [name]: error });
 
     const inputs = document.querySelectorAll(".form__input");
@@ -68,6 +73,7 @@ function Register({ onRegister }) {
               placeholder="Алексей"
               minLength="2"
               maxLength="30"
+              autoComplete="given-name"
               required
               onInput={handleInputChange}
             />
@@ -118,6 +124,12 @@ function Register({ onRegister }) {
           </Link>
         </p>
       </div>
+      <StatusPopup
+        statusMessage={statusMessage}
+        statusImage={statusImage}
+        statusPopupOpen={statusPopupOpen}
+        setStatusPopupOpen={setStatusPopupOpen}
+      />
     </section>
   );
 }

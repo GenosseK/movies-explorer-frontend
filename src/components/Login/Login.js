@@ -4,8 +4,15 @@ import "./Login.css";
 import logo from "../../images/logo.svg";
 import { useState } from "react";
 import { validateEmail, validatePassword } from "../../utils/FormValidation";
+import StatusPopup from "../StatusPopup/StatusPopup";
 
-function Login({ onLogginIn }) {
+function Login({
+  onLogginIn,
+  statusMessage,
+  statusImage,
+  statusPopupOpen,
+  setStatusPopupOpen,
+}) {
   const [errors, setErrors] = useState({
     name: "",
     email: "",
@@ -96,6 +103,12 @@ function Login({ onLogginIn }) {
           </Link>
         </p>
       </div>
+      <StatusPopup
+        statusMessage={statusMessage}
+        statusImage={statusImage}
+        statusPopupOpen={statusPopupOpen}
+        setStatusPopupOpen={setStatusPopupOpen}
+      />
     </section>
   );
 }

@@ -50,12 +50,10 @@ function SavedMovies({
 
   useEffect(() => {
     if (savedMovies.length > 0) {
-      // Apply the filter based on the 'shortMoviesOnly' state
       const filteredByDuration = shortMoviesOnly
         ? savedMovies.filter((movie) => movie.duration < 40)
         : savedMovies;
 
-      // Then apply the search query filter
       const filteredBySearch = filteredByDuration.filter((movie) => {
         const nameRU = movie.nameRU.toLowerCase();
         const nameEN = movie.nameEN.toLowerCase();

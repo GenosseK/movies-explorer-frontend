@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import MovieCard from "../MovieCard/MovieCard";
 import "./MoviesCardList.css";
 import Preloader from "../Preloader/Preloader";
+import { LAPTOP_WIDTH, SMALL_WIDTH, TABLET_WIDTH, ULTRA_WIDTH } from "../../utils/constants";
 
 function MoviesCardList({
   filteredMovies,
@@ -21,11 +22,11 @@ function MoviesCardList({
   // Function to calculate the initial number of cards to display
   function getInitialDisplayCount() {
     const screenWidth = window.innerWidth;
-    if (screenWidth >= 1708) {
+    if (screenWidth >= ULTRA_WIDTH) {
       return 15;
-    } else if (screenWidth >= 1066) {
+    } else if (screenWidth >= TABLET_WIDTH) {
       return 12;
-    } else if (screenWidth >= 451) {
+    } else if (screenWidth >= SMALL_WIDTH) {
       return 8;
     } else {
       return 5;
@@ -35,14 +36,12 @@ function MoviesCardList({
   // Function to calculate the number of cards to load at each "Ещё" button click
   function getCardsPerPage() {
     const screenWidth = window.innerWidth;
-    if (screenWidth >= 1708) {
+    if (screenWidth >= ULTRA_WIDTH) {
       return 5;
-    } else if (screenWidth >= 1387) {
+    } else if (screenWidth >= LAPTOP_WIDTH) {
       return 4;
-    } else if (screenWidth >= 1066) {
+    } else if (screenWidth >= TABLET_WIDTH) {
       return 3;
-    } else if (screenWidth >= 451) {
-      return 2;
     } else {
       return 2;
     }
