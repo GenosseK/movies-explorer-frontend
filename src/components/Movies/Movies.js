@@ -4,6 +4,7 @@ import SearchForm from "../SearchForm/SearchForm";
 import Footer from "../Footer/Footer";
 import "./Movies.css";
 import { useEffect, useState } from "react";
+import moviesApi from "../../utils/MoviesApi";
 
 function Movies({
   loggedIn,
@@ -16,11 +17,34 @@ function Movies({
   savedMovies,
   setSavedMovies,
 }) {
-  
   const [searchInput, setSearchInput] = useState("");
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [shortMoviesOnly, setShortMoviesOnly] = useState(false);
+  const [movieList, setMovieList] = useState([]);
   const [isLoadingMovies, setIsLoadingMovies] = useState(true);
+  const [canSearch, setCanSearch] = useState(false);
+  const [preloaderLoading, setPreloaderLoading] = useState(false);
+
+  useEffect(() => {
+    setPreloaderLoading(true);
+    setCanSearch(false);
+    setIsLoadingMovies(true);
+    moviesApi
+      .getAllMovies()
+      .then((movie) => {
+        setMovieList(movie);
+      })
+      .catch(() =>
+        setIsInfoTooltip(
+          "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"
+        )
+      )
+      .finally(() => {
+        setIsLoadingMovies(false);
+        setCanSearch(true);
+        setPreloaderLoading(false);
+      });
+  }, []);
 
   const loadFromLocalStorage = () => {
     const savedSearchInput = localStorage.getItem("searchInput");
@@ -63,8 +87,8 @@ function Movies({
     }
 
     const filteredByDuration = shortMoviesOnly
-      ? movies.filter((movie) => movie.duration < 40)
-      : movies;
+      ? movieList.filter((movie) => movie.duration < 40)
+      : movieList;
 
     const filteredBySearch = filteredByDuration.filter(
       (movie) =>
@@ -89,7 +113,7 @@ function Movies({
   };
 
   useEffect(() => {
-    if (!isLoadingMovies) {
+    if (canSearch) {
       movieSearch(searchInput);
     }
   }, [shortMoviesOnly]);
@@ -112,6 +136,7 @@ function Movies({
           onDeleteMovie={onDeleteMovie}
           savedMovies={savedMovies}
           setSavedMovies={setSavedMovies}
+          preloaderLoading={preloaderLoading}
         />
       </main>
       <Footer />

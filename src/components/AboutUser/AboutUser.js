@@ -17,14 +17,6 @@ function AboutUser({ onSignOut, currentUser, onUpdateUser }) {
 
   const [isFormValid, setIsFormValid] = useState(false);
 
-  useEffect(() => {
-    // Check if all inputs are valid
-    const isAnyInputInvalid = Object.values(errors).some(
-      (error) => error !== ""
-    );
-    setIsFormValid(!isAnyInputInvalid);
-  }, [errors]);
-
   const handleInputChange = (event) => {
     const input = event.target;
     const name = input.name;
@@ -39,13 +31,15 @@ function AboutUser({ onSignOut, currentUser, onUpdateUser }) {
 
     setUserData({ ...userData, [name]: value });
     setErrors({ ...errors, [name]: error });
+  };
 
-    const inputs = document.querySelectorAll(".form__input");
-    const isAnyInputInvalid = Array.from(inputs).some(
-      (input) => !input.validity.valid
+  useEffect(() => {
+    // Check if all inputs are valid
+    const isAnyInputInvalid = Object.values(errors).some(
+      (error) => error !== ""
     );
     setIsFormValid(!isAnyInputInvalid);
-  };
+  }, [errors]);
 
   const handleEditClick = () => {
     if (isEditing) {
@@ -103,7 +97,9 @@ function AboutUser({ onSignOut, currentUser, onUpdateUser }) {
           <span className="profile__error">{errors.email}</span>
         </div>
         <button
-          className="profile__button"
+          className={`profile__button ${
+            isEditing && !isFormValid ? "profile__button_disabled" : ""
+          }`}
           type="button"
           disabled={isEditing ? !isFormValid : false}
           onClick={handleEditClick}

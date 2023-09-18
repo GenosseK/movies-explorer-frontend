@@ -13,7 +13,7 @@ function SavedMovies({
   onSaveMovie,
   savedMovies,
   onDeleteMovie,
-  setSavedMovies
+  setSavedMovies,
 }) {
   const [searchInput, setSearchInput] = useState("");
   const [filteredMovies, setFilteredMovies] = useState(savedMovies);

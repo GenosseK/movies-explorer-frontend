@@ -2,7 +2,20 @@ import React, { useEffect, useState } from "react";
 import MovieCard from "../MovieCard/MovieCard";
 import "./MoviesCardList.css";
 import Preloader from "../Preloader/Preloader";
-import { LAPTOP_WIDTH, SMALL_WIDTH, TABLET_WIDTH, ULTRA_WIDTH } from "../../utils/constants";
+import {
+  ADD_LAPTOP_WIDTH_CARDS,
+  ADD_SMALL_WIDTH_CARDS,
+  ADD_TABLET_WIDTH_CARDS,
+  ADD_ULTRA_WIDTH_CARDS,
+  LAPTOP_WIDTH,
+  MINIMUM_WIDTH_GRID,
+  SMALL_WIDTH,
+  SMALL_WIDTH_GRID,
+  TABLET_WIDTH,
+  TABLET_WIDTH_GRID,
+  ULTRA_WIDTH,
+  ULTRA_WIDTH_GRID,
+} from "../../utils/constants";
 
 function MoviesCardList({
   filteredMovies,
@@ -12,10 +25,9 @@ function MoviesCardList({
   onDeleteMovie,
   savedMovies,
   setSavedMovies,
-  setFilteredMovies
+  setFilteredMovies,
+  preloaderLoading,
 }) {
-
-  const [isLoading, setLoading] = useState(false);
   const [displayCount, setDisplayCount] = useState(getInitialDisplayCount());
   const cardsPerPage = getCardsPerPage();
 
@@ -23,13 +35,13 @@ function MoviesCardList({
   function getInitialDisplayCount() {
     const screenWidth = window.innerWidth;
     if (screenWidth >= ULTRA_WIDTH) {
-      return 15;
+      return ULTRA_WIDTH_GRID;
     } else if (screenWidth >= TABLET_WIDTH) {
-      return 12;
+      return TABLET_WIDTH_GRID;
     } else if (screenWidth >= SMALL_WIDTH) {
-      return 8;
+      return SMALL_WIDTH_GRID;
     } else {
-      return 5;
+      return MINIMUM_WIDTH_GRID;
     }
   }
 
@@ -37,13 +49,13 @@ function MoviesCardList({
   function getCardsPerPage() {
     const screenWidth = window.innerWidth;
     if (screenWidth >= ULTRA_WIDTH) {
-      return 5;
+      return ADD_ULTRA_WIDTH_CARDS;
     } else if (screenWidth >= LAPTOP_WIDTH) {
-      return 4;
+      return ADD_LAPTOP_WIDTH_CARDS;
     } else if (screenWidth >= TABLET_WIDTH) {
-      return 3;
+      return ADD_TABLET_WIDTH_CARDS;
     } else {
-      return 2;
+      return ADD_SMALL_WIDTH_CARDS;
     }
   }
 
@@ -70,36 +82,40 @@ function MoviesCardList({
           <p className="cards__info-tooltip_text">{isInfoTooltip}</p>
         </div>
       )}
-      {filteredMovies.length > 0 && (
-        <ul className="cards__grid">
-          {filteredMovies.slice(0, displayCount).map((movie) => (
-            <MovieCard
-              movie={movie}
-              key={movie.id ?? movie.movieId}
-              onSaveMovie={onSaveMovie}
-              onDeleteMovie={onDeleteMovie}
-              savedMovies={savedMovies}
-              setSavedMovies={setSavedMovies}
-              filteredMovies={filteredMovies}
-              setFilteredMovies={setFilteredMovies}
-            />
-          ))}
-        </ul>
+      {preloaderLoading ? (
+        <Preloader />
+      ) : (
+        <>
+          {filteredMovies.length > 0 && (
+            <ul className="cards__grid">
+              {filteredMovies.slice(0, displayCount).map((movie) => (
+                <MovieCard
+                  movie={movie}
+                  key={movie.id ?? movie.movieId}
+                  onSaveMovie={onSaveMovie}
+                  onDeleteMovie={onDeleteMovie}
+                  savedMovies={savedMovies}
+                  setSavedMovies={setSavedMovies}
+                  filteredMovies={filteredMovies}
+                  setFilteredMovies={setFilteredMovies}
+                />
+              ))}
+            </ul>
+          )}
+
+          {filteredMovies.length > displayCount && (
+            <div className="cards__button-container">
+              <button
+                className="cards__loader-button"
+                type="button"
+                onClick={handleLoadMore}
+              >
+                Ещё
+              </button>
+            </div>
+          )}
+        </>
       )}
-      {filteredMovies.length > displayCount &&
-        (isLoading ? (
-          <Preloader />
-        ) : (
-          <div className="cards__button-container">
-            <button
-              className="cards__loader-button"
-              type="button"
-              onClick={handleLoadMore}
-            >
-              Ещё
-            </button>
-          </div>
-        ))}
     </section>
   );
 }

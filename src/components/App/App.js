@@ -10,7 +10,6 @@ import Register from "../Register/Register";
 import Login from "../Login/Login";
 import PageNotFound from "../PageNotFound/PageNotFound";
 import * as auth from "../../utils/Auth";
-import moviesApi from "../../utils/MoviesApi";
 import mainApi from "../../utils/MainApi";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import ProtectedRouteElement from "../../utils/ProtectedRoute";
@@ -19,13 +18,10 @@ import PagePreloader from "../PagePreloader/PagePreloader";
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
-
   const [isInfoTooltip, setIsInfoTooltip] = useState("");
   const [statusMessage, setStatusMessage] = useState("");
   const [statusImage, setStatusImage] = useState(false);
   const [statusPopupOpen, setStatusPopupOpen] = useState(false);
-
-  const [movieList, setMovieList] = useState([]);
 
   const [savedMovies, setSavedMovies] = useState([]);
 
@@ -71,12 +67,12 @@ function App() {
         if (error === "Error: 409") {
           setStatusMessage("Пользователь с таким email уже существует.");
           setStatusImage(false);
-          setStatusPopupOpen(true)
+          setStatusPopupOpen(true);
         }
         if (error === `Error: 500`) {
           setStatusMessage("При регистрации пользователя произошла ошибка.");
           setStatusImage(false);
-          setStatusPopupOpen(true)
+          setStatusPopupOpen(true);
         }
       });
   };
@@ -96,12 +92,12 @@ function App() {
         if (error === `Error: 401`) {
           setStatusMessage("Вы ввели неправильный логин или пароль.");
           setStatusImage(false);
-          setStatusPopupOpen(true)
+          setStatusPopupOpen(true);
         }
         if (error === `Error: 500`) {
           setStatusMessage("При авторизации произошла ошибка.");
           setStatusImage(false);
-          setStatusPopupOpen(true)
+          setStatusPopupOpen(true);
         }
       });
   };
@@ -120,23 +116,6 @@ function App() {
     setSavedMovies([]);
     navigate("/", { replace: true });
   }
-
-  function loadMovies() {
-    moviesApi
-      .getAllMovies()
-      .then((movie) => {
-        setMovieList(movie);
-      })
-      .catch(() =>
-        setIsInfoTooltip(
-          "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"
-        )
-      );
-  }
-
-  useEffect(() => {
-    loadMovies();
-  }, [loggedIn]);
 
   function handleSaveMovie(movie) {
     const movieData = {
@@ -232,7 +211,6 @@ function App() {
                     loggedIn={loggedIn}
                     setIsInfoTooltip={setIsInfoTooltip}
                     isInfoTooltip={isInfoTooltip}
-                    movies={movieList}
                     onSaveMovie={handleSaveMovie}
                     onDeleteMovie={handleDeleteMovie}
                     savedMovies={savedMovies}

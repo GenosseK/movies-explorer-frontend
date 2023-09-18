@@ -10,9 +10,8 @@ function MovieCard({
   savedMovies,
   setSavedMovies,
   filteredMovies,
-  setFilteredMovies
+  setFilteredMovies,
 }) {
-
   const location = useLocation();
 
   const [isLiked, setIsLiked] = React.useState(false);
@@ -26,13 +25,19 @@ function MovieCard({
 
   useEffect(() => {
     // окрашиваем кнопку лайка, если фильм нашелся в сохраненных
-    if (savedMovies.some((savedMovie) => savedMovie.movieId === movie.id || movie.movieId)) {
+    if (
+      savedMovies.some(
+        (savedMovie) => savedMovie.movieId === movie.id || movie.movieId
+      )
+    ) {
       setIsLiked(true);
     }
   }, [savedMovies, movie.id]);
 
   const savedMovieCheck = () => {
-    return savedMovies.find((savedMovie) => savedMovie.movieId === movie.id || movie.movieId);
+    return savedMovies.find(
+      (savedMovie) => savedMovie.movieId === movie.id || movie.movieId
+    );
   };
 
   const handleLikeClick = () => {
@@ -54,7 +59,6 @@ function MovieCard({
     }
   };
 
-
   const openTrailer = () => {
     if (movie.trailerLink) {
       window.open(movie.trailerLink, "_blank");
@@ -65,16 +69,18 @@ function MovieCard({
     <li className="card">
       <img
         className="card__image"
-        src={movie.image.url ? `https://api.nomoreparties.co/${movie.image.url}` : movie.image}
+        src={
+          movie.image.url
+            ? `https://api.nomoreparties.co/${movie.image.url}`
+            : movie.image
+        }
         alt={movie.nameRU}
         onClick={openTrailer}
       ></img>
       <div className="card__element">
         <div className="card__info">
           <h2 className="card__title">{movie.nameRU}</h2>
-          <p className="card__length">
-            {formatMovieDuration(movie.duration)}
-          </p>
+          <p className="card__length">{formatMovieDuration(movie.duration)}</p>
         </div>
         <button
           className={likeButtonClassName}

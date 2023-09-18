@@ -1,7 +1,7 @@
 import React from 'react'
 import './Preloader.css'
 
-const PagePreloader = () => {
+const Preloader = () => {
     return (
         <div className="preloader">
             <div className="preloader__container">
@@ -11,4 +11,4 @@ const PagePreloader = () => {
     )
 };
 
-export default PagePreloader;
+export default Preloader;

@@ -100,6 +100,7 @@
 
 .profile__button_disabled {
     color: #424242;
+    cursor: default;
 }
 
 .profile__button:hover {
