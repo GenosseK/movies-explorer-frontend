@@ -74,6 +74,64 @@ function MoviesCardList({
   const handleLoadMore = () => {
     setDisplayCount(displayCount + cardsPerPage);
   };
+ 
+  /*
+  const [shownMovies, setShownMovies] = useState(0)
+
+  // Function to calculate the initial number of cards to display
+  function getInitialDisplayCount() {
+    const screenWidth = window.innerWidth;
+    if (screenWidth >= ULTRA_WIDTH) {
+      setShownMovies(ULTRA_WIDTH_GRID);
+    } else if (screenWidth >= TABLET_WIDTH) {
+      setShownMovies(TABLET_WIDTH_GRID);
+    } else if (screenWidth >= SMALL_WIDTH) {
+      setShownMovies(SMALL_WIDTH_GRID);
+    } else {
+      setShownMovies(MINIMUM_WIDTH_GRID);
+    }
+  }
+
+  // Function to calculate the number of cards to load at each "Ещё" button click
+  function getCardsPerPage() {
+    const screenWidth = window.innerWidth;
+    if (screenWidth >= ULTRA_WIDTH) {
+      setShownMovies (shownMovies + ADD_ULTRA_WIDTH_CARDS);
+    } else if (screenWidth >= LAPTOP_WIDTH) {
+      setShownMovies (shownMovies + ADD_LAPTOP_WIDTH_CARDS);
+    } else if (screenWidth >= TABLET_WIDTH) {
+      setShownMovies (shownMovies + ADD_TABLET_WIDTH_CARDS);
+    } else {
+      setShownMovies (shownMovies + ADD_SMALL_WIDTH_CARDS);
+    }
+  }
+
+  useEffect(() => {
+    getInitialDisplayCount()
+  }, [])
+
+  useEffect(() => {
+    setTimeout(() => {
+      window.addEventListener("resize", getInitialDisplayCount)
+    }, 500)
+  })
+
+  // Update the displayCount when the window size changes
+  /*
+  useEffect(() => {
+    function handleResize() {
+      setDisplayCount(getInitialDisplayCount());
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const handleLoadMore = () => {
+    setDisplayCount(displayCount + cardsPerPage);
+  };*/
 
   return (
     <section className="cards">

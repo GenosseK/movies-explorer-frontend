@@ -53,7 +53,7 @@ function MovieCard({
     setIsLiked(false);
     if (location.pathname === "/saved-movies") {
       const updatedFilteredMovies = filteredMovies.filter(
-        (filteredMovie) => filteredMovie.id !== movie.id
+        (filteredMovie) => filteredMovie.id !== savedMovie.movieId
       );
       setFilteredMovies(updatedFilteredMovies);
     }
