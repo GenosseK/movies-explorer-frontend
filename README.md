@@ -5,7 +5,7 @@
  ## ⚙️ Функционал:
 
 - [x] Main страничка
-- [x] Настроена инфраструктура и создан сервер на [Express](https://github.com/maratdev/movies-explorer-api)
+- [x] Настроена инфраструктура и создан сервер на [Express](https://github.com/GenosseK/movies-explorer-api)
 - [x] Резиновая и адаптивная вёрстка
 - [x] Animation and Transform
 - [x] Оптимизация шрифтов
